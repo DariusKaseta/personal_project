@@ -1,4 +1,4 @@
-# Online CV with Scraped Data from (http://rekvizitai.vz.lt)
+# Online CV with Scraped Data from http://rekvizitai.vz.lt
 
 This web application serves as an online CV platform that showcases the user's personal information, skills, experience, and education. In addition to displaying the user's credentials, it utilizes web scraping techniques to gather relevant data from rekvizitai.vz.lt, a Lithuanian business directory website. The scraped data is filtered based on specific work scopes, such as computer software development, website creation, and hosting.
 
