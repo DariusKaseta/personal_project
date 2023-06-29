@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 from django.urls import reverse
 
-
+@login_required
 def index(request):
     personal_info_data = PersonalInformation.objects.first()
     about_me_data = AboutMe.objects.first()

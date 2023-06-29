@@ -15,14 +15,18 @@
 <body class="background-style">
         <div class="nav-panel">
             <ul class="nav">
-                <strong><li class="logo"></li></strong>
                 <li class="nav-button"><a href="{% url 'index' %}">About Me</a></li>
                 <li class="nav-button"><a href="{% url 'index' %}">Create</a></li>
                 <li class="nav-button"><a href="{% url 'index' %}">Scrape</a></li>
                 <li class="nav-button"><a href="{% url 'index' %}">Send</a></li>
-            </ul>
-        </div>
-    </header>
+            {% if user.is_authenticated %}
+                <div class="user-icon">{{ user.username }}</div>
+                <li><a class="nav-button-link" href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+                <li><a class="nav-button-link" href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </div>
     <div class="content">
         {% block content %}
         {% endblock %}
