@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %}Create/Scrape/Send{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style> 
+        .background-style {
+            background-image: url("{% static 'images/back10.jpg' %}");
+        }
+    </style>
+</head>
+<body class="background-style">
+        <div class="nav-panel">
+            <ul class="nav">
+                <strong><li class="logo"></li></strong>
+                <li class="nav-button"><a href="{% url 'index' %}">About Me</a></li>
+                <li class="nav-button"><a href="{% url 'index' %}">Create</a></li>
+                <li class="nav-button"><a href="{% url 'index' %}">Scrape</a></li>
+                <li class="nav-button"><a href="{% url 'index' %}">Send</a></li>
+            </ul>
+        </div>
+    </header>
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

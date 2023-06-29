@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Index{{ block.super }}{% endblock %}
+{% block content %}
+  <div class="personal-info-container">
+    <div class="left-column">
+      {% if personal_info_data.picture %}
+        <img class="personal_photo" src="{{ personal_info_data.picture.url }}"> 
+      {% else %}
+        <img class="default-photo" src="{% static 'images/default.jpg' %}">
+      {% endif %}
+      <p><span class="title">First & Last name:</span> <span class="rendered-information">{{ personal_info_data.first_name }} {{ personal_info_data.last_name }}</span></p>
+      <p><span class="title">Age:</span> <span class="rendered-information">{{ personal_info_data.age }}</span></p>
+      <p><span class="title">Residence:</span> <span class="rendered-information">{{ personal_info_data.residence }}</span></p>
+      <p><span class="title">Programming languages:</span> <span class="rendered-information">{{ personal_info_data.programming_languages }}</span></p>
+      <p><span class="title">Hobbies:</span> <span class="rendered-information">{{ personal_info_data.hobbies }}</span></p>
+      <p><span class="title">Email:</span> <span class="rendered-information">{{ personal_info_data.email }}</span></p>
+      <p><span class="title">Phone:</span> <span class="rendered-information">{{ personal_info_data.phone_number }}</span></p>
+    </div>
+  <div class="right-column">
+    <span class="about_me_information">{{ about_me_data.about_me|linebreaks|urlize }}</span>
+  </div>
+</div>
+{% endblock %}
