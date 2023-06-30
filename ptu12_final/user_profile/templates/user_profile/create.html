@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block title %}Create template{% endblock title %}
+{% block content %}
+<h1 class="font">Create template</h1>
+<div class="left-column">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% if user.is_authenticated %}
+        {% comment %} <div class="form-field">
+            <label for="{{ about_me_form.user.id_for_label }}">User:</label>
+            {{ about_me_form.user }}
+        </div> {% endcomment %}
+        <div class="form-field">
+            <label for="{{ personal_info_form.picture.id_for_label }}">Picture:</label>
+            {{ personal_info_form.picture }}
+        </div>
+        <div class="form-field">
+            <label for="{{ personal_info_form.first_name.id_for_label }}">First Name:</label>
+            {{ personal_info_form.first_name }}
+        </div>
+        <div class="form-field">
+            <label for="{{ personal_info_form.last_name.id_for_label }}">Last Name:</label>
+            {{ personal_info_form.last_name }}
+        </div>
+        <div class="form-field">
+            <label for="{{ personal_info_form.age.id_for_label }}">Age:</label>
+            {{ personal_info_form.age }}
+            <small>accepting only numbers.</small>
+        </div>
+        <div class="form-field">
+            <label for="{{ personal_info_form.residence.id_for_label }}">Residence:</label>
+            {{ personal_info_form.residence }}
+        </div>
+        <div class="form-field">
+            <label for="{{ personal_info_form.programming_languages.id_for_label }}">Programming languages:</label>
+            {{ personal_info_form.programming_languages }}
+        </div>
+        <div class="form-field">
+            <label for="{{ personal_info_form.hobbies.id_for_label }}">Hobbies:</label>
+            {{ personal_info_form.hobbies }}
+        </div>
+        <div class="form-field">
+            <label for="{{ personal_info_form.email.id_for_label }}">Email:</label>
+            {{ personal_info_form.email }}
+        </div>
+        <div class="form-field">
+            <label for="{{ personal_info_form.phone_number.id_for_label }}">Phone number:</label>
+            <input type="tel" id="{{ personal_info_form.phone_number.id_for_label }}"
+                   name="{{ personal_info_form.phone_number.html_name }}"
+                   value="{{ personal_info_form.phone_number.value }}"
+                   pattern="^\+370\d{8}$"
+                   required>
+                   <small>format: +370XXXXXXXX</small>
+        </div>
+        <div class="form-field">
+            <label for="{{ about_me_form.about_me.id_for_label }}">About me:</label>
+            {{ about_me_form.about_me }}
+        </div>
+        <div>
+            <button class="nav-button-link" type="submit">Submit</button>
+        </div>
+        {% endif %}
+    </form>
+</div>
+{% endblock %}
+

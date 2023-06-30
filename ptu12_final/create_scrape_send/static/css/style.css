@@ -3,7 +3,6 @@
     align-items: center;
     margin-right: 15px;
     font-size: 15px;
-    
 }
 
 .control-panel {
@@ -36,23 +35,22 @@
 .nav-button a:hover {
     color: rgba(255, 0, 0, 0.877);
     transform: scale(1.05);
-     
 }
 
 .nav-button-link {
     padding: 3px 6px;
     text-decoration: none;
     color: #333;
-    border:lightcoral;
+    border: lightcoral;
     border-radius: 6px;
     transition: box-shadow 0.3s ease;
-    margin-right: 7px
+    margin-right: 7px;
 }
 
 .nav-button-link:hover {
     color: rgba(255, 0, 0, 0.877);
     transform: scale(1.05);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); 
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 .font {
@@ -61,13 +59,7 @@
     font-style: initial;
 }
 
-.personal_photo {
-    max-width: 150px;
-    max-height: 150px;
-    border-radius: 10%;
-    object-fit: cover;
-}
-
+.personal_photo,
 .default-photo {
     max-width: 150px;
     max-height: 150px;
@@ -95,14 +87,14 @@
 }
 
 .rendered-information {
-    color: rgb(0, 0, 0); 
+    color: rgb(0, 0, 0);
     font-weight: bold;
     font-style: inherit;
     text-align: right;
 }
 
 .about_me_information {
-    color:  rgb(0, 0, 0); 
+    color: rgb(0, 0, 0);
     font-weight: bold;
     font-style: initial;
     text-align: left;
@@ -114,7 +106,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin-top: 30px; 
+    margin-top: 30px;
 }
 
 .left-column {
@@ -133,24 +125,37 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    margin-top: 90px; 
+    margin-top: 90px;
 }
 
 @media screen and (max-width: 768px) {
     .personal-info-container {
-    flex-direction: column;
-    align-items: stretch;
+        flex-direction: column;
+        align-items: stretch;
     }
-  
+
     .left-column,
     .right-column {
-      max-width: 100%;
+        max-width: 100%;
     }
 }
 
 .box-error {
     color: #ff0000;
-
 }
 
+.form-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 9px;
+    align-items: flex-start;
+}
+
+.form-field label {
+    margin-bottom: 2px;
+}
+
+.form-field textarea {
+    height: 55px;
+}
 

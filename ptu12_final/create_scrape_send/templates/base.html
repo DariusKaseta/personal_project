@@ -11,12 +11,11 @@
             background-image: url("{% static 'images/back10.jpg' %}");
         }
     </style>
-</head>
 <body class="background-style">
         <div class="nav-panel">
             <ul class="nav">
                 <li class="nav-button"><a href="{% url 'index' %}">About Me</a></li>
-                <li class="nav-button"><a href="{% url 'index' %}">Create</a></li>
+                <li class="nav-button"><a href="{% url 'create' %}">Create</a></li>
                 <li class="nav-button"><a href="{% url 'index' %}">Scrape</a></li>
                 <li class="nav-button"><a href="{% url 'index' %}">Send</a></li>
             {% if user.is_authenticated %}
@@ -27,9 +26,5 @@
             {% endif %}
         </ul>
     </div>
-    <div class="content">
-        {% block content %}
-        {% endblock %}
-    </div>
-</body>
-</html>
+{% block content %}
+{% endblock %}

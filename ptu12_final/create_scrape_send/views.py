@@ -7,8 +7,8 @@ from django.urls import reverse
 
 @login_required
 def index(request):
-    personal_info_data = PersonalInformation.objects.first()
-    about_me_data = AboutMe.objects.first()
+    personal_info_data = PersonalInformation.objects.filter(user=request.user).first()
+    about_me_data = AboutMe.objects.filter(user=request.user).first()
     context = {
         "about_me_data": about_me_data,
         "personal_info_data": personal_info_data,

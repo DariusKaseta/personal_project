@@ -4,6 +4,7 @@
 {% block content %}
   <div class="personal-info-container">
     <div class="left-column">
+      {% if personal_info_data %}
       {% if personal_info_data.picture %}
         <img class="personal_photo" src="{{ personal_info_data.picture.url }}"> 
       {% else %}
@@ -20,5 +21,9 @@
   <div class="right-column">
     <span class="about_me_information">{{ about_me_data.about_me|linebreaks|urlize }}</span>
   </div>
-</div>
+  {% else %}
+  <div class="left-column">
+      <h3 class="font">No user data were wound</h3>
+  {% endif %}
+  </div>
 {% endblock %}
