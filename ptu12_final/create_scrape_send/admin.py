@@ -1,12 +1,14 @@
 from django.contrib import admin
 from . import models
-from .models import PersonalInformation, AboutMe
+from .models import PersonalInformation, AboutMe, Email, SendScraped
 from django import forms
 from phonenumber_field.widgets import PhoneNumberPrefixWidget
 
 # Register your models here.
 
 admin.site.register(models.AboutMe)
+admin.site.register(models.Email)
+admin.site.register(models.SendScraped)
 
 
 class PersonalInformationForm(forms.ModelForm):

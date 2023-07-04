@@ -49,6 +49,39 @@ class AboutMe(models.Model):
         return reverse("aboutme_detail", kwargs={"pk": self.pk})
     
 
+class Email(models.Model):
+    user = models.ForeignKey(User, verbose_name=_("user"), related_name="emails", on_delete=models.CASCADE)
+    address = models.EmailField(unique=True)
+
+    class Meta:
+        ordering = ["address"]
+        verbose_name = _("email")
+        verbose_name_plural = _("emails")
+        
+    def __str__(self):
+        return f"{self.address}"
+
+    def get_absolute_url(self):
+        return reverse("email_detail", kwargs={"pk": self.pk})
+    
+
+class SendScraped(models.Model):
+    user = models.ForeignKey(User, verbose_name=_("user"), related_name="send_scrapeds", on_delete=models.CASCADE)
+    personal_information = models.ForeignKey(PersonalInformation, verbose_name=_("personal information"), on_delete=models.CASCADE)
+    about_me = models.ForeignKey(AboutMe, verbose_name=_("about me"), on_delete=models.CASCADE)
+
+    emails = models.ManyToManyField(Email, verbose_name=_("emails"))
+
+    class Meta:
+        verbose_name = _("send scraped")
+        verbose_name_plural = _("send scrapeds")
+
+    def __str__(self):
+        return f"{self.user}"
+
+    def get_absolute_url(self):
+        return reverse("sendscraped_detail", kwargs={"pk": self.pk})
+
 
 
     
