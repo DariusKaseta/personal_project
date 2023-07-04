@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}Scraped emails {{ block.super }}{% endblock title %}
+{% block content %}
+<div class="left-column">
+    <h2 class="font">Scraped emails <span class="font-small">(in total - {{ email_count }})</span></h2>
+    {% include 'includes/search.html' %}
+    <p>
+    {% if scrape_list %}
+        {% with scrape_list as page_obj %}
+            {% include 'includes/paginator_pages.html' %}
+        {% endwith %}
+    </p>
+    <form method="post">
+        <button type="submit" class="nav-button-link">Transfer</button>
+        {% csrf_token %}
+        {% if user.is_authenticated %}
+        <table>
+            <tbody>
+            {% for email in scrape_list %}
+                <tr>
+                    <td>
+                        <input type="checkbox" id="{{ email.address }}" name="emails" value="{{ email.address }}">
+                        <label for="{{ email.address }}">{{ email.address }}</label>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </form>
+    {% endif %}
+    <form method="post">
+        <button type="submit" class="nav-button-link">Transfer</button>
+    <p>
+        {% if scrape_list %}
+        {% with scrape_list as page_obj %}
+            {% include 'includes/paginator_nav.html' %}
+        {% endwith %}
+    </p>
+</form>
+    {% endif %}
+</div>
+{% endblock content %}
