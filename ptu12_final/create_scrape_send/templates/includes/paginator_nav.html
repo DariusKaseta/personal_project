@@ -1,0 +1,11 @@
+<div class="paginator">
+    {% if scrape_list.has_previous %}
+        <a class="nav-button-link" href="?{% if request.GET.query %}query={{ request.GET.query }}&{% endif %}page=1">&#171;</a>
+        <a class="nav-button-link" href="?{% if request.GET.query %}query={{ request.GET.query }}&{% endif %}page={{ scrape_list.previous_page_number }}">&#8592;</a>
+    {% endif %}
+    <span class="current">{{ scrape_list.number }} / {{ scrape_list.paginator.num_pages }}</span>
+    {% if scrape_list.has_next %}
+        <a class="nav-button-link" href="?{% if request.GET.query %}query={{ request.GET.query }}&{% endif %}page={{ scrape_list.next_page_number }}">&#8594;</a>
+        <a class="nav-button-link" href="?{% if request.GET.query %}query={{ request.GET.query }}&{% endif %}page={{ scrape_list.paginator.num_pages }}">&#187;</a>
+    {% endif %}
+</div>

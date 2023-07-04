@@ -1,0 +1,5 @@
+<form action="{{ request.path }}" method="get">
+    <input name="query" type="text" value="{{ request.GET.query }}">
+    <button class="nav-button-link" type="submit">&#128269;</button>
+    {% if request.GET.query %}<a href="{{ request.path }}"><button class="nav-button-link">Clear</button>{% endif %}
+</form>

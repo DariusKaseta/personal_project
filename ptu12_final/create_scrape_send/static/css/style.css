@@ -43,7 +43,6 @@
     color: #333;
     border: lightcoral;
     border-radius: 6px;
-    transition: box-shadow 0.3s ease;
     margin-right: 7px;
 }
 
@@ -57,6 +56,12 @@
     color: rgba(0, 0, 0, 0.809);
     font-weight: bold;
     font-style: initial;
+}
+
+.font-small {
+    color: rgba(255, 0, 0, 0.877);
+    font-weight: bold;
+    font-size: 0.5em;
 }
 
 .personal_photo,
@@ -159,3 +164,29 @@
     height: 55px;
 }
 
+body {
+    background: #333;
+    min-height: 100vh;
+    margin-left: 80px;
+    margin-top: 50px;
+}
+
+.pagination {
+    display: inline-block;
+}
+
+.pagination a{
+    padding: 3px 6px;
+    text-decoration: none;
+    color: #333;
+    border: lightcoral;
+    border-radius: 6px;
+    margin-right: 7px;
+}
+
+.pagination a:hover {
+    color: rgba(255, 0, 0, 0.877);
+    transform: scale(1.05);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+
+}
