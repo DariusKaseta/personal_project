@@ -1,20 +1,21 @@
-from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
-from django.db.models.query import QuerySet
-from django.views.decorators.csrf import csrf_protect
-from .forms import AboutMeForm, PersonalInformationForm, EmailForm
-from create_scrape_send.models import AboutMe, PersonalInformation, SendScraped, Email
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
 from django.core.paginator import Paginator
+from django.core.mail import send_mail
+from django.core.cache import cache
+from django.views.decorators.csrf import csrf_protect
+from django.views import View
 from django.db.models import Q
-from django.views import generic
+from django.shortcuts import render, redirect
+from .forms import AboutMeForm, PersonalInformationForm, EmailForm, SendForm
+from create_scrape_send.models import SendScraped, Email
+from django.utils.translation import gettext_lazy as _
 from random import sample
 from typing import Any
-import math
-import requests
 import re 
 from selenium import webdriver 
-from django.utils.translation import gettext_lazy as _
 
 # Create your views here.
 User = get_user_model()
@@ -22,7 +23,7 @@ User = get_user_model()
 @csrf_protect
 @login_required
 def create(request):
-    if request.method =="POST":
+    if request.method == "POST":
         print(f"User: {request.user}")
         print(f"Is authenticated: {request.user.is_authenticated}")
 
@@ -53,25 +54,31 @@ def create(request):
 @csrf_protect
 @login_required
 def scrape(request):
-    safari_driver = '/Users/ciliukas/CodeAcademy/drivers/chromedriver'
-    driver = webdriver.Safari(safari_driver)
-    driver.get('https://www.randomlists.com/email-addresses?qty=1000')
-    page_source = driver.page_source
-    EMAIL_REGEX = r'''(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])'''
-    list_of_emails = []
-    
-    for re_match in re.finditer(EMAIL_REGEX, page_source):
-        list_of_emails.append(re_match.group())
-    driver.close()
+    # Tikrinimas ar jau useris turi email .db, kad kas kart nescrapintu
+    if cache.get(f"send_emails_{request.user.id}"):
+        email_count = Email.objects.filter(user=request.user).count()
+    else:
+        safari_driver = '/Users/ciliukas/CodeAcademy/drivers/chromedriver'
+        driver = webdriver.Safari(safari_driver)
+        driver.get('https://www.randomlists.com/email-addresses?qty=1000')
+        page_source = driver.page_source
+        EMAIL_REGEX = r'''(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])'''
+        list_of_emails = []
         
-    random_emails = sample(list_of_emails, k=min(len(list_of_emails), 1001))
-    random_emails = random_emails[:1001]
-    existing_emails_count = Email.objects.filter(user=request.user).count()
-    emails_to_create = 1001 - existing_emails_count
+        for re_match in re.finditer(EMAIL_REGEX, page_source):
+            list_of_emails.append(re_match.group())
+        driver.close()
+            
+        random_emails = sample(list_of_emails, k=min(len(list_of_emails), 1001))
+        random_emails = random_emails[:1001]
+        existing_emails_count = Email.objects.filter(user=request.user).count()
+        emails_to_create = 1001 - existing_emails_count
 
-    for email_address in random_emails[:emails_to_create]:
-        Email.objects.get_or_create(address=email_address, user=request.user)
-    email_count = Email.objects.filter(user=request.user).count()
+        for email_address in random_emails[:emails_to_create]:
+            Email.objects.get_or_create(address=email_address, user=request.user)
+        email_count = Email.objects.filter(user=request.user).count()
+        # Tikrinimas ar jau useris turi email .db, kad kas kart nescrapintu
+        cache.set(f"send_emails_{request.user.id}", True)
     
     if request.method == "POST":
         form = EmailForm(request.POST)
@@ -95,3 +102,79 @@ def scrape(request):
             "page_range": page_range,
         }
     )
+
+
+@csrf_protect
+@login_required
+def search_bar(request):
+    query = request.GET.get('query')
+    email_queryset = Email.objects.filter(user=request.user)
+
+    if query:
+        email_queryset = email_queryset.filter(
+            Q(address__icontains=query) |
+            Q(address__icontains="@{}".format(query)) |
+            Q(address__istartswith=query))
+
+    paginator = Paginator(email_queryset, 50)
+    page_number = request.GET.get("page")
+    email_list = paginator.get_page(page_number)
+
+    return render(
+        request,
+        "includes/search.html",
+        {
+            "email_list": email_list,
+            "query": query,
+        }
+    )
+
+
+class SendEmailView(LoginRequiredMixin, View):
+    model = Email
+    template_name = "user_profile/send_email.html"
+
+    def get(self, request):
+        initial_email = request.user.email if request.user.is_authenticated else ""
+        send_form = SendForm(initial={"email_from": initial_email})
+        return render(request, self.template_name, {"send_form": send_form})
+
+    def post(self, request):
+        selected_emails = request.POST.getlist("emails")
+        to_email = ", ".join(selected_emails)
+
+        if not selected_emails:
+            messages.error(request, _("Please select at least one recipient."))
+            return redirect("error_message")
+        send_form = SendForm(request.POST)
+        
+        if send_form.is_valid():
+            subject = send_form.cleaned_data["subject"]
+            name_from = send_form.cleaned_data["name_from"]
+            email_from = send_form.cleaned_data["email_from"]
+            content = send_form.cleaned_data["content"]
+            today_date = send_form.cleaned_data["today_date"]
+
+            sent_messages = send_mail(subject, name_from, email_from, content, today_date, [to_email], fail_silently=False)
+            
+            if sent_messages > 0:
+                return redirect("success_message")
+            else:
+                messages.error(request, _("Error sending the email. Please try again."))
+                return redirect("error_message")
+        else:
+            initial_email = request.user.email if request.user.is_authenticated else ""
+            send_form = SendForm(initial={"email_from": initial_email})
+            return render(request, self.template_name, {"send_form": send_form, "to_email": to_email})
+        
+
+def success_message_view(request):
+    if request.method == 'POST':
+        messages.success(request, _("Your email sent!"))
+        return render(request, "user_profile/send_email_success.html")
+    else:
+        return redirect("success_message")
+
+
+def error_message_view(request):
+    return render(request, "user_profile/send_email_error.html")

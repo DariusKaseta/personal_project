@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Compose an Email{% endblock title %}
+{% block content %}
+<div class="left-column">   
+    <h1 class="font">Compose New Email</h1>
+        <form method="POST" action="{% url 'success_message' %}">
+            {% csrf_token %}
+            {% if user.is_authenticated %}
+                <div class="form-group">
+                    <label for="emails">To:</label>
+                    <textarea name="emails" id="emails" rows="10" cols="50" readonly>{{ to_email }}</textarea>
+                </div>
+                {% for field in send_form %}
+                    <div class="form-group">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.errors %}
+                            <div class="errors">
+                                {% for error in field.errors %}
+                                    <p class="error">{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                <button type="submit">Send</button>
+            {% endif %}
+        </form>
+    </div>
+{% endblock %}
+
+
+
