@@ -17,7 +17,7 @@
                 <li class="nav-button"><a href="{% url 'index' %}">About Me</a></li>
                 <li class="nav-button"><a href="{% url 'create' %}">Create</a></li>
                 <li class="nav-button"><a href="{% url 'scrape' %}">Scrape</a></li>
-                <li class="nav-button"><a href="{% url 'index' %}">Send</a></li>
+                <li class="nav-button"><a href="{% url 'send_emails' %}">Send</a></li>
             {% if user.is_authenticated %}
                 <div class="user-icon">{{ user.username }}</div>
                 <li><a class="nav-button-link" href="{% url 'logout' %}">Logout</a></li>
