@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% block title %}Create template{% endblock title %}
 {% block content %}
-<h1 class="font">Create template</h1>
 <div class="left-column">
+<h1 class="font">Create template</h1>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {% if user.is_authenticated %}
