@@ -1,19 +1,18 @@
-<form action="search_bar" method="get">
-    <input name="query" type="text" value="{{ query }}">
-    <button class="nav-button-link" type="submit">&#128269;</button>
-    {% if request.GET.query %}<a class="nav-button-link" href="{{ request.path }}">clear</a>{% endif %}
+{% load i18n %}
+<form action="{% url 'search' %}" method="get">
+            <input name="query" type="text" value="{{ request.GET.query }}">
+            <button class="nav-button-link" type="submit">&#128269;</button>
+            {% if request.GET.query %}
+                <a href="?">{% trans "clear"|title %}</a>
+            {% endif %}
 </form>
-
-{% if email_list %}
-    <p>Showing results for: <strong>{{ query }}</strong></p>
-    <ul>
-        {% for email in email_list %}
-            <li>{{ email.address }}</li>
-        {% endfor %}
-    </ul>
+{% if object_list %}
+<p>{% trans "results for:"|capfirst %} <strong>{{ request.GET.query }}</strong></p>
+<ul>
+    {% for email in object_list %}
+        <li>{{ email.address }}</li>
+    {% endfor %}
+</ul>
 {% endif %}
-
-{% comment %} {% else %}
-    <p class="box box-error">No results were found: <strong>{{ query }}</strong></p> {% endcomment %}
 
 

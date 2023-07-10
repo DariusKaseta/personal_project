@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
-{% block title %}Bye {{ block.super }}{% endblock title %}
+{% load i18n %}
+{% block title %}{% trans "bye"|capfirst %} {{ block.super }}{% endblock title %}
 {% block content %}
 <div class="personal-info-container">
     <div class="left-column">
-      <h1 class="font">See You</h1>
-        <h4>you are always welcome to come back.</h4>
-        <p><a href="{% url 'login' %}" class="nav-button-link">Log in</a> again.</p> 
+      <h1 class="font">{% trans "see you!"|capfirst %}</h1>
+        <h4>{% trans "you are always welcome to come back."|capfirst %}</h4>
+        <p><a href="{% url 'login' %}" class="nav-button-link">{% trans "log in"|capfirst %}</a>{% trans "again?"|lower %}</p> 
     </div>
 </div>   
 {% endblock content %}

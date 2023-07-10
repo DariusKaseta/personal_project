@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-{% load static %}
-<html lang="en">
+{% load static i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,18 +13,32 @@
             background-image: url("{% static 'images/back10.jpg' %}");
         }
     </style>
+<div class="language-bar">
+    <div class="nav-panel2">
+        <form action="{% url 'set_language' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ redirect_to }}">
+            <select name="language" onchange="this.form.submit();">
+                {% for lang in LANGUAGES %}
+                    <option value="{{ lang.0 }}" {% if lang.0 == LANGUAGE_CODE %}selected{% endif %}>
+                        {{ lang.1 }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+</form>
 <body class="background-style">
         <div class="nav-panel">
             <ul class="nav">
-                <li class="nav-button"><a href="{% url 'index' %}">About Me</a></li>
-                <li class="nav-button"><a href="{% url 'create' %}">Create</a></li>
-                <li class="nav-button"><a href="{% url 'scrape' %}">Scrape</a></li>
-                <li class="nav-button"><a href="{% url 'send_emails' %}">Send</a></li>
+                <li class="nav-button"><a href="{% url 'index' %}">{% trans "about me"|title %}</a></li>
+                <li class="nav-button"><a href="{% url 'create' %}">{% trans "create"|capfirst %}</a></li>
+                <li class="nav-button"><a href="{% url 'scrape' %}">{% trans "scrape"|capfirst %}</a></li>
+                <li class="nav-button"><a href="{% url 'send_emails' %}">{% trans "send"|capfirst %}</a></li>
             {% if user.is_authenticated %}
                 <div class="user-icon">{{ user.username }}</div>
-                <li><a class="nav-button-link" href="{% url 'logout' %}">Logout</a></li>
+                <li><a class="nav-button-link" href="{% url 'logout' %}">{% trans "logout"|capfirst %}</a></li>
             {% else %}
-                <li><a class="nav-button-link" href="{% url 'login' %}">Login</a></li>
+                <li><a class="nav-button-link" href="{% url 'login' %}">{% trans "login"|capfirst %}</a></li>
             {% endif %}
         </ul>
     </div>

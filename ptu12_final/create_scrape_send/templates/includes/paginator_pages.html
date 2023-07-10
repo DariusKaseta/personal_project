@@ -1,7 +1,8 @@
+{% load i18n %}
 <div class="pagination">
     {% if page_obj.has_previous %}
-        <a href="?{% if request.GET.query %}query={{ request.GET.query }}&{% endif %}page=1">First</a>
-        <a href="?{% if request.GET.query %}query={{ request.GET.query }}&{% endif %}page={{ page_obj.previous_page_number }}">Previous</a>
+        <a href="?{% if request.GET.query %}query={{ request.GET.query }}&{% endif %}page=1">{% trans "first"|capfirst %}</a>
+        <a href="?{% if request.GET.query %}query={{ request.GET.query }}&{% endif %}page={{ page_obj.previous_page_number }}">{% trans "previous"|capfirst %}</a>
     {% endif %}
     
     {% for number in page_obj.paginator.page_range %}
@@ -13,8 +14,8 @@
     {% endfor %}
     
     {% if page_obj.has_next %}
-        <a href="?{% if request.GET.query %}query={{ request.GET.query }}&{% endif %}page={{ page_obj.next_page_number }}">Next</a>
-        <a href="?{% if request.GET.query %}query={{ request.GET.query }}&{% endif %}page={{ page_obj.paginator.num_pages }}">Last</a>
+        <a href="?{% if request.GET.query %}query={{ request.GET.query }}&{% endif %}page={{ page_obj.next_page_number }}">{% trans "next"|capfirst %}</a>
+        <a href="?{% if request.GET.query %}query={{ request.GET.query }}&{% endif %}page={{ page_obj.paginator.num_pages }}">{% trans "last"|capfirst %}</a>
     {% endif %}
 </div>
 

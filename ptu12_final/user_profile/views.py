@@ -7,7 +7,7 @@ from django.core.mail import send_mail
 from django.core.cache import cache
 from django.views.decorators.csrf import csrf_protect
 from django.views import View
-from django.db.models import Q
+from django.views import generic
 from django.shortcuts import render, redirect
 from .forms import AboutMeForm, PersonalInformationForm, EmailForm, SendForm
 from create_scrape_send.models import SendScraped, Email
@@ -51,8 +51,6 @@ def create(request):
     return render(request, "user_profile/create.html", context) 
 
 
-@csrf_protect
-@login_required
 def scrape(request):
     # Tikrinimas ar jau useris turi email .db, kad kas kart nescrapintu
     if cache.get(f"send_emails_{request.user.id}"):
@@ -102,34 +100,8 @@ def scrape(request):
             "page_range": page_range,
         }
     )
-
-
-@csrf_protect
-@login_required
-def search_bar(request):
-    query = request.GET.get('query')
-    email_queryset = Email.objects.filter(user=request.user)
-
-    if query:
-        email_queryset = email_queryset.filter(
-            Q(address__icontains=query) |
-            Q(address__icontains="@{}".format(query)) |
-            Q(address__istartswith=query))
-
-    paginator = Paginator(email_queryset, 50)
-    page_number = request.GET.get("page")
-    email_list = paginator.get_page(page_number)
-
-    return render(
-        request,
-        "includes/search.html",
-        {
-            "email_list": email_list,
-            "query": query,
-        }
-    )
-
-
+  
+  
 class SendEmailView(LoginRequiredMixin, View):
     model = Email
     template_name = "user_profile/send_email.html"
@@ -160,7 +132,6 @@ class SendEmailView(LoginRequiredMixin, View):
             if sent_messages > 0:
                 return redirect("success_message")
             else:
-                messages.error(request, _("Error sending the email. Please try again."))
                 return redirect("error_message")
         else:
             initial_email = request.user.email if request.user.is_authenticated else ""
@@ -169,11 +140,7 @@ class SendEmailView(LoginRequiredMixin, View):
         
 
 def success_message_view(request):
-    if request.method == 'POST':
-        messages.success(request, _("Your email sent!"))
-        return render(request, "user_profile/send_email_success.html")
-    else:
-        return redirect("success_message")
+    return render(request, "user_profile/send_email_success.html")
 
 
 def error_message_view(request):

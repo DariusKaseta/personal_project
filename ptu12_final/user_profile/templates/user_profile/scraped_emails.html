@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
-{% block title %}Scraped emails {{ block.super }}{% endblock title %}
+{% load i18n %}
+{% block title %}{% trans "scraped emails"|capfirst %} {{ block.super }}{% endblock title %}
 {% block content %}
 <div class="left-column">
-<h1 class="font">Scraped emails <span class="font-small">(in total - {{ email_count }})</span></h1>
+<h1 class="font">{% trans "scraped emails"|capfirst %} <span class="font-small">({% trans "in total"|capfirst %} - {{ email_count }})</span></h1>
     {% include 'includes/search.html' %}
     <p>
     {% if scrape_list %}
@@ -13,9 +14,9 @@
     </p>
     <form method="post" action="{% url 'send_emails' %}">
         <p> 
-            <button type="button" class="nav-button-link" onclick="selectAllEmails()">Select All</button>
-            <button type="submit" class="nav-button-link">Transfer To:</button>
-            <button type="button" class="nav-button-link" onclick="deselectAllEmails()">Deselect All</button>
+            <button type="button" class="nav-button-link" onclick="selectAllEmails()">{% trans "select all"|capfirst %}</button>
+            <button type="submit" class="nav-button-link">{% trans "transfer to:"|capfirst %}</button>
+            <button type="button" class="nav-button-link" onclick="deselectAllEmails()">{% trans "deselect all"|capfirst %}</button>
         </p>
         {% csrf_token %}
         {% if user.is_authenticated %}
@@ -33,9 +34,9 @@
         </table>
         {% endif %}
         <p> 
-            <button type="button" class="nav-button-link" onclick="selectAllEmails()">Select All</button>
-            <button type="submit" class="nav-button-link">Transfer To:</button>
-            <button type="button" class="nav-button-link" onclick="deselectAllEmails()">Deselect All</button>
+            <button type="button" class="nav-button-link" onclick="selectAllEmails()">{% trans "select all"|capfirst %}</button>
+            <button type="submit" class="nav-button-link">{% trans "transfer to:"|capfirst %}</button>
+            <button type="button" class="nav-button-link" onclick="deselectAllEmails()">{% trans "deselect all"|capfirst %}</button>
         </p>
         <p>
             {% if scrape_list %}

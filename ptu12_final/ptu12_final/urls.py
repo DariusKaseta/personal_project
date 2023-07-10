@@ -23,11 +23,10 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("", include("create_scrape_send.urls")),
-    path("admin/", admin.site.urls),
     path("profile/", include("user_profile.urls")),
+    path("i18n/", include("django.conf.urls.i18n")),
     path("accounts/", include("django.contrib.auth.urls")),
-
-
+    path("admin/", admin.site.urls),
     
 ] + (static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
   + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT))

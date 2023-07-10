@@ -1,0 +1,266 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-07-10 14:50+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < "
+"11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? "
+"1 : n % 1 != 0 ? 2: 3);\n"
+
+#: user_profile/forms.py:31
+msgid "Subject:"
+msgstr "Tema:"
+
+#: user_profile/forms.py:32
+msgid "Name from:"
+msgstr "Nuo ko:"
+
+#: user_profile/forms.py:33
+msgid "Email from:"
+msgstr "El. pašto adresas:"
+
+#: user_profile/forms.py:34
+msgid "Contetn:"
+msgstr "Turinys:"
+
+#: user_profile/forms.py:36
+msgid ""
+"Hello, I am a 31-year-old programmer looking for a job as a junior "
+"programmer.\n"
+" My CV: http://127.0.0.1:8000\n"
+" P.S. This letter has been sent to registered companies according to the "
+"fields of activity, Computer software development, website development, "
+"hosting."
+msgstr ""
+"Sveiki, esu 31 metų programuotojas, ieškau jaunesniojo  programuotojo "
+"darbo.\n"
+"Mano CV: http://127.0.0.1:8000\n"
+"P.S. Šis laiškas išsiųstas registruotoms įmonėms pagal veiklos sritis, "
+"Kompiuterių programinės įrangos kūrimas, Interneto svetainių kūrimas ir "
+"priegloba."
+
+#: user_profile/forms.py:38
+msgid "Today's date:"
+msgstr "Šios dienos data:"
+
+#: user_profile/templates/registration/logged_out.html:3
+msgid "bye"
+msgstr "viso gero"
+
+#: user_profile/templates/registration/logged_out.html:7
+msgid "see you!"
+msgstr "iki pasimatymo!"
+
+#: user_profile/templates/registration/logged_out.html:8
+msgid "you are always welcome to come back."
+msgstr "visada maloniai Jus kviečiame sugrįžti."
+
+#: user_profile/templates/registration/logged_out.html:9
+#: user_profile/templates/registration/login.html:21
+#: user_profile/templates/registration/password_reset_complete.html:8
+msgid "log in"
+msgstr "prisijungti"
+
+#: user_profile/templates/registration/logged_out.html:9
+msgid "again?"
+msgstr "dar kartą?"
+
+#: user_profile/templates/registration/login.html:3
+msgid "login to"
+msgstr "prisijungti prie"
+
+#: user_profile/templates/registration/login.html:7
+msgid "login to CSS"
+msgstr "Prisijungti prie CSS"
+
+#: user_profile/templates/registration/login.html:10
+msgid "login error. please try again."
+msgstr "Prisijungimo klaida. Prašau, pabandykite dar kartą."
+
+#: user_profile/templates/registration/login.html:22
+msgid "forgot password?"
+msgstr "Užmiršote slaptažodį?"
+
+#: user_profile/templates/registration/password_reset_complete.html:3
+msgid "password changed at"
+msgstr "slaptažodžio keitimas"
+
+#: user_profile/templates/registration/password_reset_complete.html:7
+msgid "password has been changed successfully!"
+msgstr "Slaptažodis sėkmingai pakeistas!"
+
+#: user_profile/templates/registration/password_reset_complete.html:8
+msgid "you can now"
+msgstr "dabar galite"
+
+#: user_profile/templates/registration/password_reset_complete.html:8
+msgid "with your new password."
+msgstr "su savo nauju slaptažodžiu."
+
+#: user_profile/templates/registration/password_reset_confirm.html:3
+#: user_profile/templates/registration/password_reset_confirm.html:7
+#: user_profile/templates/registration/password_reset_form.html:7
+msgid "password reset"
+msgstr "slaptažodžio nustatymas iš naujo "
+
+#: user_profile/templates/registration/password_reset_confirm.html:12
+msgid "change password"
+msgstr "pakeisti slaptažodį"
+
+#: user_profile/templates/registration/password_reset_confirm.html:15
+msgid "password reset failed: the link has expired and is no longer valid."
+msgstr "Slaptažodžio pakeitimas nepavyko: nuoroda nebegalioja."
+
+#: user_profile/templates/registration/password_reset_done.html:3
+msgid "password reset done at"
+msgstr "slaptažodžio nustatymas iš naujo"
+
+#: user_profile/templates/registration/password_reset_done.html:7
+msgid "please check your email"
+msgstr "Prašau, patikrinkite savo el. paštą"
+
+#: user_profile/templates/registration/password_reset_done.html:8
+msgid "we have sent further instructions."
+msgstr "išsiuntėme tolesnius nurodymus."
+
+#: user_profile/templates/registration/password_reset_email.html:9
+msgid "best regards,"
+msgstr "Geriausi linkėjimai,"
+
+#: user_profile/templates/registration/password_reset_form.html:3
+msgid "password reset at"
+msgstr "slaptažodžio nustatymas iš naujo"
+
+#: user_profile/templates/registration/password_reset_form.html:11
+msgid "confirm"
+msgstr "patvirtinti"
+
+#: user_profile/templates/user_profile/create.html:3
+#: user_profile/templates/user_profile/create.html:6
+msgid "create template"
+msgstr "Susikurti šabloną"
+
+#: user_profile/templates/user_profile/create.html:16
+msgid "picture:"
+msgstr "Nuotrauka:"
+
+#: user_profile/templates/user_profile/create.html:20
+msgid "first name:"
+msgstr "Vardas:"
+
+#: user_profile/templates/user_profile/create.html:24
+msgid "last name:"
+msgstr "Pavardė:"
+
+#: user_profile/templates/user_profile/create.html:28
+msgid "age:"
+msgstr "Amžius:"
+
+#: user_profile/templates/user_profile/create.html:30
+msgid "accepting only numbers."
+msgstr "Priima tik skaičius."
+
+#: user_profile/templates/user_profile/create.html:33
+msgid "residence:"
+msgstr "Gyvenamoji vieta:"
+
+#: user_profile/templates/user_profile/create.html:37
+msgid "programming languages:"
+msgstr "Programavimo kalbos:"
+
+#: user_profile/templates/user_profile/create.html:41
+msgid "hobbies:"
+msgstr "Hobiai:"
+
+#: user_profile/templates/user_profile/create.html:45
+msgid "email:"
+msgstr "El. pašto adresas:"
+
+#: user_profile/templates/user_profile/create.html:49
+msgid "phone number:"
+msgstr "Mob. telefonas:"
+
+#: user_profile/templates/user_profile/create.html:55
+msgid "format:"
+msgstr "Formatas:"
+
+#: user_profile/templates/user_profile/create.html:58
+msgid "about me:"
+msgstr "Apie mane:"
+
+#: user_profile/templates/user_profile/create.html:62
+msgid "submit"
+msgstr "sukurti"
+
+#: user_profile/templates/user_profile/scraped_emails.html:3
+#: user_profile/templates/user_profile/scraped_emails.html:6
+msgid "scraped emails"
+msgstr "Iškrapštyti el. pašto adresai"
+
+#: user_profile/templates/user_profile/scraped_emails.html:6
+msgid "in total"
+msgstr "Viso el. adresų"
+
+#: user_profile/templates/user_profile/scraped_emails.html:17
+#: user_profile/templates/user_profile/scraped_emails.html:37
+msgid "select all"
+msgstr "Parinti visus"
+
+#: user_profile/templates/user_profile/scraped_emails.html:18
+#: user_profile/templates/user_profile/scraped_emails.html:38
+msgid "transfer to:"
+msgstr "Perkelti į gavėjus"
+
+#: user_profile/templates/user_profile/scraped_emails.html:19
+#: user_profile/templates/user_profile/scraped_emails.html:39
+msgid "deselect all"
+msgstr "Atžymėti visus"
+
+#: user_profile/templates/user_profile/send_email.html:3
+msgid "compose an email"
+msgstr "Susikurti naują el. laišką"
+
+#: user_profile/templates/user_profile/send_email.html:6
+msgid "compose new email"
+msgstr "Sukurti naują el. laišką"
+
+#: user_profile/templates/user_profile/send_email.html:11
+msgid "to:"
+msgstr "Gavėjas:"
+
+#: user_profile/templates/user_profile/send_email.html:27
+msgid "send"
+msgstr "siųsti"
+
+#: user_profile/templates/user_profile/send_email_error.html:3
+msgid "email error"
+msgstr "pašto klaida"
+
+#: user_profile/templates/user_profile/send_email_error.html:6
+msgid "error sending email!"
+msgstr "Klaida bandant siųsti el. laišką!"
+
+#: user_profile/templates/user_profile/send_email_success.html:3
+msgid "email success"
+msgstr "el. paštas sėkmingas"
+
+#: user_profile/templates/user_profile/send_email_success.html:6
+msgid "your email was sent."
+msgstr "Jūsų el. paštas išsiųstas."
+
+#: user_profile/views.py:119
+msgid "Please select at least one recipient."
+msgstr "Pasirinkite bent vieną gavėją."

@@ -1,0 +1,168 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-07-10 13:41+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < "
+"11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? "
+"1 : n % 1 != 0 ? 2: 3);\n"
+
+#: create_scrape_send/models.py:13 create_scrape_send/models.py:37
+#: create_scrape_send/models.py:53 create_scrape_send/models.py:69
+msgid "user"
+msgstr "vartotojas"
+
+#: create_scrape_send/models.py:14
+msgid "picture"
+msgstr "nuotrauka"
+
+#: create_scrape_send/models.py:15
+msgid "first name"
+msgstr "vardas"
+
+#: create_scrape_send/models.py:16
+msgid "last name"
+msgstr "pavardė"
+
+#: create_scrape_send/models.py:17
+msgid "age"
+msgstr "amžius"
+
+#: create_scrape_send/models.py:18
+msgid "residence"
+msgstr "gyvenamoji vieta"
+
+#: create_scrape_send/models.py:19
+msgid "programming languages"
+msgstr "programavimo kalbos"
+
+#: create_scrape_send/models.py:20
+msgid "hobbies"
+msgstr "hobiai"
+
+#: create_scrape_send/models.py:21 create_scrape_send/models.py:58
+msgid "email"
+msgstr "el. pašto adresas"
+
+#: create_scrape_send/models.py:26 create_scrape_send/models.py:38
+#: create_scrape_send/models.py:70
+msgid "personal information"
+msgstr "asmeninė informacija"
+
+#: create_scrape_send/models.py:27
+msgid "personal informations"
+msgstr "asmeninės informacijos"
+
+#: create_scrape_send/models.py:39 create_scrape_send/models.py:42
+#: create_scrape_send/models.py:71 create_scrape_send/templates/base.html:33
+msgid "about me"
+msgstr "apie mane"
+
+#: create_scrape_send/models.py:43
+msgid "about mes"
+msgstr "apie mane"
+
+#: create_scrape_send/models.py:59 create_scrape_send/models.py:73
+msgid "emails"
+msgstr "el. pašto adresai"
+
+#: create_scrape_send/models.py:76
+msgid "send scraped"
+msgstr "siųsti iškrapštytą"
+
+#: create_scrape_send/models.py:77
+msgid "send scrapeds"
+msgstr "siųsti iškrapštytus"
+
+#: create_scrape_send/templates/base.html:34
+msgid "create"
+msgstr "sukurti"
+
+#: create_scrape_send/templates/base.html:35
+msgid "scrape"
+msgstr "iškrapštyti"
+
+#: create_scrape_send/templates/base.html:36
+msgid "send"
+msgstr "siųsti"
+
+#: create_scrape_send/templates/base.html:39
+msgid "logout"
+msgstr "atsijungti"
+
+#: create_scrape_send/templates/base.html:41
+msgid "login"
+msgstr "prisijungti"
+
+#: create_scrape_send/templates/create_scrape_send/index.html:3
+msgid "index"
+msgstr "indeksas"
+
+#: create_scrape_send/templates/create_scrape_send/index.html:13
+msgid "first & last name:"
+msgstr "Vardas ir pavardė:"
+
+#: create_scrape_send/templates/create_scrape_send/index.html:14
+msgid "age:"
+msgstr "amžius:"
+
+#: create_scrape_send/templates/create_scrape_send/index.html:15
+msgid "residence:"
+msgstr "Gyvenamoji vieta:"
+
+#: create_scrape_send/templates/create_scrape_send/index.html:16
+msgid "programming languages:"
+msgstr "programavimo kalbos:"
+
+#: create_scrape_send/templates/create_scrape_send/index.html:17
+msgid "hobbies:"
+msgstr "hobiai:"
+
+#: create_scrape_send/templates/create_scrape_send/index.html:18
+msgid "email:"
+msgstr "el. pašto adresas:"
+
+#: create_scrape_send/templates/create_scrape_send/index.html:19
+msgid "phone:"
+msgstr "mob. telefonas:"
+
+#: create_scrape_send/templates/create_scrape_send/index.html:26
+msgid "no user data were found"
+msgstr "naudotojo duomenų nerasta"
+
+#: create_scrape_send/templates/includes/paginator_pages.html:4
+msgid "first"
+msgstr "pirmas"
+
+#: create_scrape_send/templates/includes/paginator_pages.html:5
+msgid "previous"
+msgstr "ankstesnis"
+
+#: create_scrape_send/templates/includes/paginator_pages.html:17
+msgid "next"
+msgstr "kitas"
+
+#: create_scrape_send/templates/includes/paginator_pages.html:18
+msgid "last"
+msgstr "paskutinis"
+
+#: create_scrape_send/templates/includes/search.html:6
+msgid "clear"
+msgstr "išvalyti"
+
+#: create_scrape_send/templates/includes/search.html:10
+msgid "results for:"
+msgstr "paieškos rezultatai:"

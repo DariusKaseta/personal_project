@@ -207,11 +207,12 @@ body {
     height: 100px;
     width: 50rem;
 }
+
 .success-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 39vh;
+    height: 40vh;
 }
 
 .success-message {
@@ -234,3 +235,22 @@ body {
     border-radius: 20px;
     box-shadow: 0 0 60px rgba(0, 0, 0, 0.5);
 }
+
+.language-bar {
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.nav-panel2 {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.nav-panel2 select {
+    font-size: 11px;
+    background-color: transparent;
+    cursor: grab;
+    margin: 0 43px;
+}
+

@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
-{% block title %}Compose an Email{% endblock title %}
+{% load i18n %}
+{% block title %}{% trans "compose an email"|capfirst %}{% endblock title %}
 {% block content %}
 <div class="left-column">   
-    <h1 class="font">Compose New Email</h1>
+    <h1 class="font">{% trans "compose new email"|capfirst %}</h1>
         <form method="POST" action="{% url 'success_message' %}">
             {% csrf_token %}
             {% if user.is_authenticated %}
                 <div class="form-group">
-                    <label for="emails">To:</label>
+                    <label for="emails">{% trans "to:"|capfirst %}</label>
                     <textarea name="emails" id="emails" rows="10" cols="50" readonly>{{ to_email }}</textarea>
                 </div>
                 {% for field in send_form %}
@@ -23,7 +24,7 @@
                         {% endif %}
                     </div>
                 {% endfor %}
-                <button type="submit">Send</button>
+                <button class="nav-button-link" type="submit">{% trans "send"|capfirst %}</button>
             {% endif %}
         </form>
     </div>
