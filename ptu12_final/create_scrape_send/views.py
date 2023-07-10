@@ -1,9 +1,13 @@
-from django.http import HttpResponse, HttpResponseBadRequest
-from django.shortcuts import render, get_object_or_404
-from .models import AboutMe, PersonalInformation
+from django.shortcuts import render
+from .models import AboutMe, PersonalInformation, Email
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect
-from django.urls import reverse
+from django.views import generic
+from django.views.generic import ListView
+from django.db.models import Q
+from django.db.models.query import QuerySet
+from django.template.loader import render_to_string
+from django.http import HttpResponse
+
 
 @login_required
 def index(request):
@@ -14,3 +18,19 @@ def index(request):
         "personal_info_data": personal_info_data,
     }
     return render(request, "create_scrape_send/index.html", context=context)
+
+
+class ScrapedEmailsView(ListView):
+    model = Email
+    template_name = "includes/search.html"
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        query = self.request.GET.get("query")
+        if query:
+            queryset = queryset.filter(
+                Q(address__icontains=query)
+            )
+        return queryset
+
+
