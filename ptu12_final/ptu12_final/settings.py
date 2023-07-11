@@ -26,7 +26,7 @@ SECRET_KEY = local_settings.SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "ptu12_final.local", "127.0.0.1"]
 
 
 # Application definition
@@ -139,9 +139,9 @@ PHONENUMBER_DEFAULT_REGION = "LT"
 
 LOGIN_REDIRECT_URL = "/"
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # smtp - tikras laiskas
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend" # smtp - tikras laiskas
 EMAIL_HOST = local_settings.EMAIL_HOST
-EMAIL_POST = 587
+EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = local_settings.EMAIL_HOST_USER
 EMAIL_HOST_PASSWORD = local_settings.EMAIL_HOST_PASSWORD

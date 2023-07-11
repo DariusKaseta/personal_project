@@ -1,0 +1,31 @@
+version: "3.7"
+services:
+  ptu12_final:
+    build: .
+    image: python:ptu12_final
+    container_name: ptu12_final.dev
+    tty: true
+    stdin_open: true
+    restart: always
+    ports:
+      - 8000:8000
+    volumes:
+      - ./ptu12_final:/app
+    command: >
+      bash -c "python manage.py migrate &&
+              python manage.py collectstatic --noinput &&
+              gunicorn ptu12_final.wsgi --bind 0.0.0.0:8000"
+  nginx:
+    build: ./nginx/.
+    image: nginx:ptu12_final
+    container_name: ptu12_final.nginx
+    restart: always
+    ports:
+      - 80:80
+    links:
+      - ptu12_final:ptu12_final
+    volumes:
+      - ./ptu12_final/media:/app/media
+      - ./ptu12_final/static:/app/static
+
+
