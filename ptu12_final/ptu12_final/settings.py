@@ -79,9 +79,17 @@ WSGI_APPLICATION = 'ptu12_final.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "HOST": "postgres",
+        "NAME": "ptu12_final",
+        "USER": "ptu12",
+        "PASSWORD": local_settings.DATABASE_PASSWORD,
+        "PORT": 5432
     }
 }
 

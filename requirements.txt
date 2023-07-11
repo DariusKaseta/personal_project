@@ -13,6 +13,7 @@ idna==3.4
 outcome==1.2.0
 phonenumbers==8.13.15
 Pillow==9.5.0
+psycopg2-binary==2.9.6
 PySocks==1.7.1
 requests==2.31.0
 selenium==4.10.0
