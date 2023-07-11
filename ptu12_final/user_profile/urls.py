@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import SendEmailView, success_message_view, error_message_view
+from .views import SendEmailView , success_message_view, error_message_view
 
 # user_profile URLs
 

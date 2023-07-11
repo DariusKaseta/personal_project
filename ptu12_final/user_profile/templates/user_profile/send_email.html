@@ -4,7 +4,7 @@
 {% block content %}
 <div class="left-column">   
     <h1 class="font">{% trans "compose new email"|capfirst %}</h1>
-        <form method="POST" action="{% url 'success_message' %}">
+        <form method="POST" action="">
             {% csrf_token %}
             {% if user.is_authenticated %}
                 <div class="form-group">

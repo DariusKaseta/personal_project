@@ -51,6 +51,8 @@ def create(request):
     return render(request, "user_profile/create.html", context) 
 
 
+@csrf_protect
+@login_required
 def scrape(request):
     # Tikrinimas ar jau useris turi email .db, kad kas kart nescrapintu
     if cache.get(f"send_emails_{request.user.id}"):
@@ -100,8 +102,8 @@ def scrape(request):
             "page_range": page_range,
         }
     )
-  
-  
+
+
 class SendEmailView(LoginRequiredMixin, View):
     model = Email
     template_name = "user_profile/send_email.html"
@@ -118,17 +120,22 @@ class SendEmailView(LoginRequiredMixin, View):
         if not selected_emails:
             messages.error(request, _("Please select at least one recipient."))
             return redirect("error_message")
-        send_form = SendForm(request.POST)
-        
-        if send_form.is_valid():
-            subject = send_form.cleaned_data["subject"]
-            name_from = send_form.cleaned_data["name_from"]
-            email_from = send_form.cleaned_data["email_from"]
-            content = send_form.cleaned_data["content"]
-            today_date = send_form.cleaned_data["today_date"]
 
-            sent_messages = send_mail(subject, name_from, email_from, content, today_date, [to_email], fail_silently=False)
-            
+        send_form = SendForm(request.POST)
+
+        if send_form.is_valid() and request.method == "POST":
+            subject = request.POST["subject"]
+            content = request.POST["content"]
+            email_from = request.POST["email_from"]
+
+            sent_messages = send_mail(
+                subject=subject,
+                message=content,
+                from_email=email_from,
+                recipient_list=selected_emails,
+                fail_silently=False
+            )
+
             if sent_messages > 0:
                 return redirect("success_message")
             else:
