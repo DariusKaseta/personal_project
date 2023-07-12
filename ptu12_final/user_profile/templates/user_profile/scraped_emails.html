@@ -3,13 +3,13 @@
 {% block title %}{% trans "scraped emails"|capfirst %} {{ block.super }}{% endblock title %}
 {% block content %}
 <div class="left-column">
-<h1 class="font">{% trans "scraped emails"|capfirst %} <span class="font-small">({% trans "in total"|capfirst %} - {{ email_count }})</span></h1>
+    <h1 class="font">{% trans "scraped emails"|capfirst %} <span class="font-small">({% trans "in total"|capfirst %} - {{ email_count }})</span></h1>
     {% include 'includes/search.html' %}
     <p>
     {% if scrape_list %}
-            {% with scrape_list as page_obj %}
-                {% include 'includes/paginator_pages.html' %}
-            {% endwith %}
+        {% with scrape_list as page_obj %}
+            {% include 'includes/paginator_pages.html' %}
+        {% endwith %}
     {% endif %}
     </p>
     <form method="post" action="{% url 'send_emails' %}">
@@ -38,13 +38,15 @@
             <button type="submit" class="nav-button-link">{% trans "transfer to:"|capfirst %}</button>
             <button type="button" class="nav-button-link" onclick="deselectAllEmails()">{% trans "deselect all"|capfirst %}</button>
         </p>
-        <p>
-            {% if scrape_list %}
-                    {% with scrape_list as page_obj %}
-                        {% include 'includes/paginator_pages.html' %}
-                    {% endwith %}
-            {% endif %}
-        </p>
+    </form>
+    <p>
+    {% if scrape_list %}
+        {% with scrape_list as page_obj %}
+            {% include 'includes/paginator_pages.html' %}
+        {% endwith %}
+    {% endif %}
+    </p>
+</div>
 <script>
     function selectAllEmails() {
         const checkboxes = document.querySelectorAll('input[type="checkbox"]');
@@ -60,6 +62,4 @@
         });
     }
 </script>
-</div>
-</form>
 {% endblock %}

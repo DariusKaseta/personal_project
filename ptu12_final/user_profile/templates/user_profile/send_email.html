@@ -9,7 +9,7 @@
             {% if user.is_authenticated %}
                 <div class="form-group">
                     <label for="emails">{% trans "to:"|capfirst %}</label>
-                    <textarea name="emails" id="emails" rows="10" cols="50" readonly>{{ to_email }}</textarea>
+                    <textarea name="emails" id="emails" rows="10" cols="50">{{ to_email }}</textarea>
                 </div>
                 {% for field in send_form %}
                     <div class="form-group">

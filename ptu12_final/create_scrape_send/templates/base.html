@@ -15,6 +15,12 @@
     </style>
 <div class="language-bar">
     <div class="nav-panel2">
+        {% if user.is_authenticated %}
+                <div class="user-icon">{{ user.username }}</div>
+                <a class="nav-button-link" href="{% url 'logout' %}">{% trans "logout"|capfirst %}</a>
+            {% else %}
+                <a class="nav-button-link" href="{% url 'login' %}">{% trans "login"|capfirst %}</a>
+            {% endif %}
         <form action="{% url 'set_language' %}" method="post">
             {% csrf_token %}
             <input type="hidden" name="next" value="{{ redirect_to }}">
@@ -34,13 +40,7 @@
                 <li class="nav-button"><a href="{% url 'create' %}">{% trans "create"|capfirst %}</a></li>
                 <li class="nav-button"><a href="{% url 'scrape' %}">{% trans "scrape"|capfirst %}</a></li>
                 <li class="nav-button"><a href="{% url 'send_emails' %}">{% trans "send"|capfirst %}</a></li>
-            {% if user.is_authenticated %}
-                <div class="user-icon">{{ user.username }}</div>
-                <li><a class="nav-button-link" href="{% url 'logout' %}">{% trans "logout"|capfirst %}</a></li>
-            {% else %}
-                <li><a class="nav-button-link" href="{% url 'login' %}">{% trans "login"|capfirst %}</a></li>
-            {% endif %}
-        </ul>
-    </div>
+            </ul>
+        </div>
 {% block content %}
 {% endblock %}

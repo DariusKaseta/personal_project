@@ -1,8 +1,9 @@
 .user-icon {
     display: flex;
     align-items: center;
-    margin-right: 15px;
-    font-size: 15px;
+    margin-right: 30px;
+    font-size: 20px;
+    background-color: transparent;
 }
 
 .control-panel {
@@ -50,6 +51,13 @@
     color: rgba(255, 0, 0, 0.877);
     transform: scale(1.05);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.current {
+    background-color:rgba(237, 151, 151, 0.709);
+    color: #fff;
+    padding: 3px 7px;
+    border-radius: 5px;
 }
 
 .font {

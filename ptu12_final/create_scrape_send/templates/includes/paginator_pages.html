@@ -8,7 +8,7 @@
     {% for number in page_obj.paginator.page_range %}
         {% if number == page_obj.number %}
             <span class="current">{{ number }}</span>
-        {% elif number > page_obj.number|add:"-3" and number < page_obj.number|add:"2" %}
+        {% elif number > page_obj.number|add:"-3" and number < page_obj.number|add:"3" %}
             <a href="?{% if request.GET.query %}query={{ request.GET.query }}&{% endif %}page={{ number }}">{{ number }}</a>
         {% endif %}
     {% endfor %}

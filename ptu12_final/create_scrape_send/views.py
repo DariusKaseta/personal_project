@@ -22,7 +22,7 @@ def index(request):
 
 class ScrapedEmailsView(ListView):
     model = Email
-    template_name = "includes/search.html"
+    template_name = "user_profile/scraped_emails.html"
 
     def get_queryset(self):
         queryset = super().get_queryset()

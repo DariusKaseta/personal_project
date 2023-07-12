@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-11 09:56+0300\n"
+"POT-Creation-Date: 2023-07-12 09:50+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,22 +37,35 @@ msgid "Contetn:"
 msgstr "Turinys:"
 
 #: user_profile/forms.py:36
+#| msgid ""
+#| "Hello, I am a 31-year-old programmer looking for a job as a junior "
+#| "programmer.\n"
+#| "\n"
+#| "My CV: http://127.0.0.1:8000\n"
+#| "\n"
+#| "P.S. This letter has been sent to registered companies according to the "
+#| "fields of activity, Computer software development, website development, "
+#| "hosting."
 msgid ""
 "Hello, I am a 31-year-old programmer looking for a job as a junior "
 "programmer.\n"
-" My CV: http://127.0.0.1:8000\n"
-" P.S. This letter has been sent to registered companies according to the "
-"fields of activity, Computer software development, website development, "
-"hosting."
+"\n"
+"My CV: http://127.0.0.1:8000\n"
+"\n"
+"P.S. This letter has been sent to registered companies according to the "
+"fields of activity, Computer software development, Website development, "
+"Hosting."
 msgstr ""
 "Sveiki, esu 31 metų programuotojas, ieškau jaunesniojo  programuotojo "
 "darbo.\n"
+"\n"
 "Mano CV: http://127.0.0.1:8000\n"
+"\n"
 "P.S. Šis laiškas išsiųstas registruotoms įmonėms pagal veiklos sritis, "
 "Kompiuterių programinės įrangos kūrimas, Interneto svetainių kūrimas ir "
-"priegloba."
+"Priegloba."
 
-#: user_profile/forms.py:38
+#: user_profile/forms.py:40
 msgid "Today's date:"
 msgstr "Šios dienos data:"
 
@@ -141,7 +154,10 @@ msgid ""
 "Hello, someone has requested the password change at CSS. If it was not you, "
 "please ignore this email. You can change your password by following this "
 "link:"
-msgstr "Sveiki, kažkas paprašė pakeisti Jūsų slaptažodį CSS. Jei tai ne jūs, prašome nekreipti dėmesio į šį el. laišką. Galite pakeisti slaptažodį paspaudus šią nuorodą:"
+msgstr ""
+"Sveiki, kažkas paprašė pakeisti Jūsų slaptažodį CSS. Jei tai ne jūs, prašome "
+"nekreipti dėmesio į šį el. laišką. Galite pakeisti slaptažodį paspaudus šią "
+"nuorodą:"
 
 #: user_profile/templates/registration/password_reset_email.html:5
 msgid "best regards,"
@@ -229,7 +245,7 @@ msgstr "Parinti visus"
 #: user_profile/templates/user_profile/scraped_emails.html:18
 #: user_profile/templates/user_profile/scraped_emails.html:38
 msgid "transfer to:"
-msgstr "Perkelti į gavėjus"
+msgstr "Perkelti į gavėjus:"
 
 #: user_profile/templates/user_profile/scraped_emails.html:19
 #: user_profile/templates/user_profile/scraped_emails.html:39
@@ -268,6 +284,6 @@ msgstr "el. paštas sėkmingas"
 msgid "your email was sent."
 msgstr "Jūsų el. paštas išsiųstas."
 
-#: user_profile/views.py:122
+#: user_profile/views.py:121
 msgid "Please select at least one recipient."
 msgstr "Pasirinkite bent vieną gavėją."
