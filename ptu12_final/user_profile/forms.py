@@ -35,6 +35,7 @@ class SendForm(forms.Form):
         widget=forms.Textarea(attrs={'rows': 5}),
         initial=_("""Hello, I am a 31-year-old programmer looking for a job as a junior programmer.\n
 My CV: http://127.0.0.1:8000\n
+Best regards D. Kaseta\n
 P.S. This letter has been sent to registered companies according to the fields of activity, Computer software development, Website development, Hosting.""")
     )
     today_date = forms.DateTimeField(label=_("Today's date:"), initial=timezone.now)

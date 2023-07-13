@@ -2,9 +2,10 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
+from django.core.exceptions import ValidationError
 from django.core.paginator import Paginator
-from django.core.mail import send_mail
 from django.core.cache import cache
+from django.conf import settings
 from django.views.decorators.csrf import csrf_protect
 from django.views import View
 from django.views import generic
@@ -16,6 +17,12 @@ from random import sample
 from typing import Any
 import re 
 from selenium import webdriver 
+import smtplib
+from email.message import EmailMessage
+from email.utils import formataddr
+
+
+
 
 # Create your views here.
 User = get_user_model()
@@ -115,12 +122,21 @@ class SendEmailView(LoginRequiredMixin, View):
 
     def post(self, request):
         selected_emails = request.POST.getlist("emails")
-        to_email = ", ".join(selected_emails)
+        
 
         if not selected_emails:
             messages.error(request, _("Please select at least one recipient."))
             return redirect("error_message")
+        to_email = []
 
+        for email in selected_emails:
+            email = email.strip()
+            try:
+                to_email.append(email)
+            except ValidationError as e:
+                messages.error(request, _("Invalid email address: %(email)s") % {"email": email})
+                return redirect("error_message")
+        
         send_form = SendForm(request.POST)
 
         if send_form.is_valid() and request.method == "POST":
@@ -128,22 +144,29 @@ class SendEmailView(LoginRequiredMixin, View):
             content = request.POST["content"]
             email_from = request.POST["email_from"]
 
-            sent_messages = send_mail(
-                subject=subject,
-                message=content,
-                from_email=email_from,
-                recipient_list=selected_emails,
-                fail_silently=False
-            )
+            sent_messages = EmailMessage()
+            sent_messages["Subject"] = subject
+            sent_messages["From"] = formataddr(("Coding Is Fun :)", f"{email_from}"))
+            sent_messages["To"] = to_email
+            sent_messages.set_content(content)
 
-            if sent_messages > 0:
+            try:
+                with smtplib.SMTP(settings.EMAIL_HOST, settings.EMAIL_PORT) as server:
+                    server.starttls()
+                    server.login(settings.EMAIL_HOST_USER, settings.EMAIL_HOST_PASSWORD)
+                    server.sendmail(settings.EMAIL_HOST_USER, to_email, sent_messages.as_string())
+            except smtplib.SMTPException as e:
+                messages.error(request, _("Failed to send email. Please try again."))
+                return redirect("error_message")
+
+            if len(sent_messages) > 0:
                 return redirect("success_message")
             else:
                 return redirect("error_message")
         else:
             initial_email = request.user.email if request.user.is_authenticated else ""
             send_form = SendForm(initial={"email_from": initial_email})
-            return render(request, self.template_name, {"send_form": send_form, "to_email": to_email})
+            return render(request, self.template_name, {"send_form": send_form, "to_email": ", ".join(to_email)})
         
 
 def success_message_view(request):

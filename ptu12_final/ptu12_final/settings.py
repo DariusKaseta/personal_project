@@ -151,7 +151,7 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend" # smtp - tikras la
 EMAIL_HOST = local_settings.EMAIL_HOST
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-# EMAIL_USE_SSL = False
+EMAIL_USE_SSL = False
 EMAIL_HOST_USER = local_settings.EMAIL_HOST_USER
 EMAIL_HOST_PASSWORD = local_settings.EMAIL_HOST_PASSWORD
 

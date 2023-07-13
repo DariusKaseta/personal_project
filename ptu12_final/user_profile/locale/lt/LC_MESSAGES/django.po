@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-12 09:50+0300\n"
+"POT-Creation-Date: 2023-07-13 10:26+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,13 +44,15 @@ msgstr "Turinys:"
 #| "My CV: http://127.0.0.1:8000\n"
 #| "\n"
 #| "P.S. This letter has been sent to registered companies according to the "
-#| "fields of activity, Computer software development, website development, "
-#| "hosting."
+#| "fields of activity, Computer software development, Website development, "
+#| "Hosting."
 msgid ""
 "Hello, I am a 31-year-old programmer looking for a job as a junior "
 "programmer.\n"
 "\n"
 "My CV: http://127.0.0.1:8000\n"
+"\n"
+"Best regards D. Kaseta\n"
 "\n"
 "P.S. This letter has been sent to registered companies according to the "
 "fields of activity, Computer software development, Website development, "
@@ -61,11 +63,13 @@ msgstr ""
 "\n"
 "Mano CV: http://127.0.0.1:8000\n"
 "\n"
+"Pagarbiai D. Kašėta\n"
+"\n"
 "P.S. Šis laiškas išsiųstas registruotoms įmonėms pagal veiklos sritis, "
 "Kompiuterių programinės įrangos kūrimas, Interneto svetainių kūrimas ir "
 "Priegloba."
 
-#: user_profile/forms.py:40
+#: user_profile/forms.py:41
 msgid "Today's date:"
 msgstr "Šios dienos data:"
 
@@ -284,6 +288,16 @@ msgstr "el. paštas sėkmingas"
 msgid "your email was sent."
 msgstr "Jūsų el. paštas išsiųstas."
 
-#: user_profile/views.py:121
+#: user_profile/views.py:128
 msgid "Please select at least one recipient."
 msgstr "Pasirinkite bent vieną gavėją."
+
+#: user_profile/views.py:137
+#, python-format
+msgid "Invalid email address: %(email)s"
+msgstr "Neteisingas el. pašto adresas: %(email)s"
+
+#: user_profile/views.py:159
+#| msgid "login error. please try again."
+msgid "Failed to send email. Please try again."
+msgstr "Prisijungimo klaida. Prašau, pabandykite dar kartą."
