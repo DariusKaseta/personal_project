@@ -30,6 +30,18 @@
                     </td>
                 </tr>
             {% endfor %}
+            {% if object_list %}
+                        <ul>
+                            {% for email in object_list %}
+                            <tr>
+                                <td>
+                                    <input type="checkbox" id="{{ email.address }}" name="emails" value="{{ email.address }}">
+                                    <label for="{{ email.address }}">{{ email.address }}</label>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </ul>
+            {% endif %}
             </tbody>
         </table>
         {% endif %}
