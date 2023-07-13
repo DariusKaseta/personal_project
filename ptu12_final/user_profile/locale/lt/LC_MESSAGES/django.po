@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-13 10:26+0300\n"
+"POT-Creation-Date: 2023-07-13 14:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,19 +33,11 @@ msgid "Email from:"
 msgstr "El. pašto adresas:"
 
 #: user_profile/forms.py:34
-msgid "Contetn:"
+#| msgid "Contetn:"
+msgid "Content:"
 msgstr "Turinys:"
 
 #: user_profile/forms.py:36
-#| msgid ""
-#| "Hello, I am a 31-year-old programmer looking for a job as a junior "
-#| "programmer.\n"
-#| "\n"
-#| "My CV: http://127.0.0.1:8000\n"
-#| "\n"
-#| "P.S. This letter has been sent to registered companies according to the "
-#| "fields of activity, Computer software development, Website development, "
-#| "Hosting."
 msgid ""
 "Hello, I am a 31-year-old programmer looking for a job as a junior "
 "programmer.\n"
@@ -242,17 +234,17 @@ msgid "in total"
 msgstr "Viso el. adresų"
 
 #: user_profile/templates/user_profile/scraped_emails.html:17
-#: user_profile/templates/user_profile/scraped_emails.html:37
+#: user_profile/templates/user_profile/scraped_emails.html:49
 msgid "select all"
 msgstr "Parinti visus"
 
 #: user_profile/templates/user_profile/scraped_emails.html:18
-#: user_profile/templates/user_profile/scraped_emails.html:38
+#: user_profile/templates/user_profile/scraped_emails.html:50
 msgid "transfer to:"
 msgstr "Perkelti į gavėjus:"
 
 #: user_profile/templates/user_profile/scraped_emails.html:19
-#: user_profile/templates/user_profile/scraped_emails.html:39
+#: user_profile/templates/user_profile/scraped_emails.html:51
 msgid "deselect all"
 msgstr "Atžymėti visus"
 
@@ -298,6 +290,5 @@ msgid "Invalid email address: %(email)s"
 msgstr "Neteisingas el. pašto adresas: %(email)s"
 
 #: user_profile/views.py:159
-#| msgid "login error. please try again."
 msgid "Failed to send email. Please try again."
 msgstr "Prisijungimo klaida. Prašau, pabandykite dar kartą."

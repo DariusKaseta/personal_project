@@ -31,7 +31,7 @@ class SendForm(forms.Form):
     subject = forms.CharField(label=_("Subject:"), max_length=200)
     name_from = forms.CharField(label=_("Name from:"), max_length=200)
     email_from = forms.EmailField(label=_("Email from:"))
-    content = forms.CharField(label=_("Contetn:"), 
+    content = forms.CharField(label=_("Content:"), 
         widget=forms.Textarea(attrs={'rows': 5}),
         initial=_("""Hello, I am a 31-year-old programmer looking for a job as a junior programmer.\n
 My CV: http://127.0.0.1:8000\n

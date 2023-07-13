@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-13 10:26+0300\n"
+"POT-Creation-Date: 2023-07-13 14:23+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -159,10 +159,13 @@ msgstr "kitas"
 msgid "last"
 msgstr "paskutinis"
 
+#: create_scrape_send/templates/includes/search.html:3
+msgid "Search for email"
+msgstr "Iškoti el. pašto"
+
 #: create_scrape_send/templates/includes/search.html:6
 msgid "clear"
 msgstr "išvalyti"
 
-#: create_scrape_send/templates/includes/search.html:10
-msgid "results for:"
-msgstr "paieškos rezultatai:"
+#~ msgid "results for:"
+#~ msgstr "paieškos rezultatai:"
