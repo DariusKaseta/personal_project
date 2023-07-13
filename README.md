@@ -21,12 +21,19 @@ source venv/bin/activate
 3. Install the dependencies: pip install -r requirements.txt
 
 4. Set up the environment variables depending on your host: (e.a.
+
 EMAIL_BACKEND =
+
 EMAIL_HOST = 
+
 EMAIL_PORT = 
+
 EMAIL_USE_TLS = 
+
 EMAIL_USE_SSL = 
+
 EMAIL_HOST_USER = 
+
 EMAIL_HOST_PASSWORD = )
 
 6. Apply database migrations: python manage.py migrate
