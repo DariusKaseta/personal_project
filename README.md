@@ -1,24 +1,55 @@
-# Online CV with Scraped Data from [rekvizitai.vz.lt](http://rekvizitai.vz.lt)
+# CSS App
 
-This web application serves as an online CV platform that showcases the user's personal information, skills, experience, and education. In addition to displaying the user's credentials, it utilizes web scraping techniques to gather relevant data from [rekvizitai.vz.lt](http://rekvizitai.vz.lt), a Lithuanian business directory website. The scraped data is filtered based on specific work scopes, such as computer software development, website creation, and hosting.
+This is a Django-based web application that allows users to send emails to multiple recipients using a user-friendly interface. The app provides a simple and convenient way to compose and send emails with custom subjects and contents to a selected list of recipients.
 
 # Features
 
-User Profile: The app allows the user to create and manage their personal profile, including contact information, skills, work experience, and education.
-Data Scraping: Using web scraping techniques, the app retrieves data from [rekvizitai.vz.lt](http://rekvizitai.vz.lt) based on the specified work scopes. This includes company names and email addresses of businesses involved in computer software development, website creation, and hosting.
-Targeted Email Sending: The app provides a feature to send targeted emails directly to the scraped email addresses. Users can customize and send virtual CVs or personalized messages to companies of interest, promoting their services and expertise.
+User authentication: Users can log in, and log out to access the email sending functionality.
+Compose email: Users can compose emails by entering a subject, content, and selecting recipients from a list.
+Multiple recipients: Users can select multiple recipients from the provided list or search for specific recipients using the search functionality.
+Error handling: The app provides appropriate error handling for scenarios such as no recipient selection or errors encountered during email sending.
+Success message: Users receive a success message upon successful email sending.
+Responsive design: The app is designed to be responsive and compatible with different screen sizes.
 
-# Installation and Setup
+# Installation
 
-Clone the repository to your local machine.
-Install the required dependencies using npm install or your preferred package manager.
-Configure the scraping parameters in the designated settings file. Specify the desired work scopes and any additional filtering criteria.
-Set up your email account credentials in the email configuration file. Ensure that the email account is authorized to send emails.
+1. Clone the repository: git clone https://github.com/DariusKaseta/personal_project
 
-# Usage
+2. Create and activate a virtual environment (optional but recommended): python3 -m venv venv
+source venv/bin/activate
 
-To be set...
+3. Install the dependencies: pip install -r requirements.txt
 
-# Disclaimer
+4. Set up the environment variables depending on your host: (e.a.
+EMAIL_BACKEND =
+EMAIL_HOST = 
+EMAIL_PORT = 
+EMAIL_USE_TLS = 
+EMAIL_USE_SSL = 
+EMAIL_HOST_USER = 
+EMAIL_HOST_PASSWORD = )
 
-Please note that web scraping may raise legal and ethical considerations. Ensure that your usage of this app complies with all applicable laws and regulations, respects the terms and conditions of [rekvizitai.vz.lt](https://rekvizitai.vz.lt/taisykles/), and protects the privacy and data security of individuals and businesses.
+6. Apply database migrations: python manage.py migrate
+
+7. Start the development server: python manage.py runserver
+
+8. Open your web browser and visit http://localhost:8000
+
+# Dependencies
+
+The app has the following dependencies:
+
+Django: web framework for building the application
+Django REST Framework: for creating the API endpoints (if applicable)
+Bootstrap: front-end framework for responsive design
+Other dependencies listed in the requirements.txt file
+
+# Contribution
+
+Contributions to the CSS App are welcome! If you find any bugs or have suggestions for improvements, please open an issue or submit a pull request.
+
+# License
+
+The CSS App is open-source and available under the MIT License.
+
+Feel free to customize the README.md according to your specific app requirements and add any additional sections or information you deem necessary.
