@@ -10,7 +10,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.views import View
 from django.views import generic
 from django.shortcuts import render, redirect
-from .forms import AboutMeForm, PersonalInformationForm, EmailForm, SendForm
+from .forms import AboutMeForm, PersonalInformationForm, EmailForm, SendForm, AddRecipientForm
 from create_scrape_send.models import SendScraped, Email
 from django.utils.translation import gettext_lazy as _
 from random import sample
@@ -175,3 +175,22 @@ def success_message_view(request):
 
 def error_message_view(request):
     return render(request, "user_profile/send_email_error.html")
+
+
+class AddRecipient(LoginRequiredMixin, View):
+    template_name = "user_profile/send_email.html"
+
+    def get(self, request):
+        form = AddRecipientForm()
+        return render(request, self.template_name, {'form': form})
+    
+    def post(self, request):
+        form = AddRecipientForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data["address"]
+            email_object = Email(address=email, user=request.user)
+            email_object.save()
+            messages.success(request, _("Recipient added successfully."))
+            return redirect("scrape") 
+        return render(request, self.template_name, {'form': form})
+

@@ -39,3 +39,14 @@ Best regards D. Kaseta\n
 P.S. This letter has been sent to registered companies according to the fields of activity, Computer software development, Website development, Hosting.""")
     )
     today_date = forms.DateTimeField(label=_("Today's date:"), initial=timezone.now)
+
+
+class AddRecipientForm(forms.ModelForm):
+    class Meta:
+        model = Email
+        fields = ("address",)
+        widgets = {
+            "address": forms.TextInput(),
+        }
+
+                                

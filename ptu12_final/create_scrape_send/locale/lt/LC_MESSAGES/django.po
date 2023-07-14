@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-13 14:23+0300\n"
+"POT-Creation-Date: 2023-07-14 13:43+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,7 +67,7 @@ msgid "personal informations"
 msgstr "asmeninės informacijos"
 
 #: create_scrape_send/models.py:39 create_scrape_send/models.py:42
-#: create_scrape_send/models.py:71 create_scrape_send/templates/base.html:39
+#: create_scrape_send/models.py:71 create_scrape_send/templates/base.html:41
 msgid "about me"
 msgstr "apie mane"
 
@@ -87,23 +87,23 @@ msgstr "siųsti iškrapštytą"
 msgid "send scrapeds"
 msgstr "siųsti iškrapštytus"
 
-#: create_scrape_send/templates/base.html:20
+#: create_scrape_send/templates/base.html:22
 msgid "logout"
 msgstr "atsijungti"
 
-#: create_scrape_send/templates/base.html:22
+#: create_scrape_send/templates/base.html:24
 msgid "login"
 msgstr "prisijungti"
 
-#: create_scrape_send/templates/base.html:40
+#: create_scrape_send/templates/base.html:42
 msgid "create"
 msgstr "sukurti"
 
-#: create_scrape_send/templates/base.html:41
+#: create_scrape_send/templates/base.html:43
 msgid "scrape"
 msgstr "iškrapštyti"
 
-#: create_scrape_send/templates/base.html:42
+#: create_scrape_send/templates/base.html:44
 msgid "send"
 msgstr "siųsti"
 

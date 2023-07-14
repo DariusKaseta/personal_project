@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-13 14:27+0300\n"
+"POT-Creation-Date: 2023-07-14 13:43+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,7 +33,6 @@ msgid "Email from:"
 msgstr "El. pašto adresas:"
 
 #: user_profile/forms.py:34
-#| msgid "Contetn:"
 msgid "Content:"
 msgstr "Turinys:"
 
@@ -248,6 +247,19 @@ msgstr "Perkelti į gavėjus:"
 msgid "deselect all"
 msgstr "Atžymėti visus"
 
+#: user_profile/templates/user_profile/scraped_emails.html:63
+msgid "add recipient"
+msgstr "pridėti gavėją"
+
+#: user_profile/templates/user_profile/scraped_emails.html:68
+#| msgid "compose an email"
+msgid "input an email"
+msgstr "įveskite el. paštą"
+
+#: user_profile/templates/user_profile/scraped_emails.html:77
+msgid "add"
+msgstr "pridėti"
+
 #: user_profile/templates/user_profile/send_email.html:3
 msgid "compose an email"
 msgstr "Susikurti naują el. laišką"
@@ -292,3 +304,7 @@ msgstr "Neteisingas el. pašto adresas: %(email)s"
 #: user_profile/views.py:159
 msgid "Failed to send email. Please try again."
 msgstr "Prisijungimo klaida. Prašau, pabandykite dar kartą."
+
+#: user_profile/views.py:193
+msgid "Recipient added successfully."
+msgstr "Gavėjas sėkmingai pridėtas."

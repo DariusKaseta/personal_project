@@ -59,6 +59,24 @@
     {% endif %}
     </p>
 </div>
+<div class="right-column2">
+    <h1 class="font">{% trans "add recipient"|capfirst %}</h1>
+    <form method="post" action="{% url 'add_recipient' %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ form.address.id_for_label }}">{{ form.address.label }}</label>
+            <input type="text" name="{{ form.address.name }}" id="{{ form.address.id_for_label }}" placeholder="{% trans "input an email"|capfirst %}">
+            {% if form.address.errors %}
+                <div class="errors">
+                    {% for error in form.address.errors %}
+                        <p class="error">{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        <button class="nav-button-link" type="submit" name="add_recipient">{% trans "add"|capfirst %}</button>
+    </form>
+</div>
 <script>
     function selectAllEmails() {
         const checkboxes = document.querySelectorAll('input[type="checkbox"]');
