@@ -16,7 +16,9 @@
 <div class="language-bar">
     <div class="nav-panel2">
         {% if user.is_authenticated %}
-                <div class="user-icon">{{ user.username }}</div>
+                <a class="nav-button-link" href="{% url 'admin:index' %}">
+                    <div class="user-icon">{{ user.username }}</div>
+                </a>
                 <a class="nav-button-link" href="{% url 'logout' %}">{% trans "logout"|capfirst %}</a>
             {% else %}
                 <a class="nav-button-link" href="{% url 'login' %}">{% trans "login"|capfirst %}</a>
