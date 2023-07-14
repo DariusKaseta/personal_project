@@ -1,12 +1,11 @@
-from django.shortcuts import render
-from .models import AboutMe, PersonalInformation, Email
-from django.contrib.auth.decorators import login_required
-from django.views import generic
-from django.views.generic import ListView
 from django.db.models import Q
-from django.db.models.query import QuerySet
-from django.template.loader import render_to_string
-from django.http import HttpResponse
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.views.generic import ListView
+from .models import AboutMe, PersonalInformation, Email
+from operator import or_
+from functools import reduce
+from django.views import generic
 
 
 @login_required
@@ -20,22 +19,19 @@ def index(request):
     return render(request, "create_scrape_send/index.html", context=context)
 
 
-class ScrapedEmailsView(ListView):
+class ScrapedEmailsSearchView(ListView):
     model = Email
     template_name = "user_profile/scraped_emails.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["query"] = self.request.GET.get("query", "")
-        return context
-
+    search_fields = ["address"]
+        
     def get_queryset(self):
         queryset = super().get_queryset()
-        query = self.request.GET.get("query")
-        if query:
-            queryset = queryset.filter(
-                Q(address__icontains=query)
-            )
+        search_term = self.request.GET.get("query")
+        if search_term:
+            search_words = search_term.split()
+            if search_words:
+                q_objects = [Q(**{field + '__icontains': word}) for field in self.search_fields for word in search_words]
+                queryset = queryset.filter(reduce(Q.__or__, q_objects))
         return queryset
 
 

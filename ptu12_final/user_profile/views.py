@@ -147,14 +147,14 @@ class SendEmailView(LoginRequiredMixin, View):
             sent_messages = EmailMessage()
             sent_messages["Subject"] = subject
             sent_messages["From"] = formataddr(("Coding Is Fun :)", f"{email_from}"))
-            sent_messages["To"] = to_email
+            sent_messages["To"] = ", ".join(to_email)
             sent_messages.set_content(content)
 
             try:
                 with smtplib.SMTP(settings.EMAIL_HOST, settings.EMAIL_PORT) as server:
                     server.starttls()
                     server.login(settings.EMAIL_HOST_USER, settings.EMAIL_HOST_PASSWORD)
-                    server.sendmail(settings.EMAIL_HOST_USER, to_email, sent_messages.as_string())
+                    server.send_message(sent_messages)
             except smtplib.SMTPException as e:
                 messages.error(request, _("Failed to send email. Please try again."))
                 return redirect("error_message")

@@ -1,6 +1,6 @@
 from django.urls import path, include
 from . import views
-from .views import ScrapedEmailsView
+from .views import ScrapedEmailsSearchView
 
 
 # APP urls
@@ -8,6 +8,6 @@ from .views import ScrapedEmailsView
 urlpatterns = [
     path("", views.index, name="index"),
     path("profile/", include("user_profile.urls")),
-    path("scrape/search/", views.ScrapedEmailsView.as_view(), name="search"),
+    path("scrape/search/", views.ScrapedEmailsSearchView.as_view(), name="search"),
     
 ]

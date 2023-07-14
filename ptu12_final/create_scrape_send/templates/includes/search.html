@@ -1,11 +1,12 @@
 {% load i18n %}
 <form method="get" action="{% url 'search' %}">
-            <input name="query" type="text" value="{{ request.GET.query }}" placeholder="{% trans "Search for email"|capfirst %}">
-            <button class="nav-button-link" type="submit">&#128269;</button>
-            {% if request.GET.query %}
-                <a class="nav-button-link" href="{% url 'scrape' %}">{% trans "clear"|capfirst %}</a>  
-            {% endif %}
-        </form>
+    <input name="query" type="text" value="{{ request.GET.query }}" placeholder="{% trans "Search for email"|capfirst %}">
+    <button class="nav-button-link" type="submit">&#128269;</button>
+{% if request.GET.query %}
+    <a class="nav-button-link" href="{% url 'scrape' %}">{% trans "clear"|capfirst %}</a>  
+{% endif %}
+</form>
+
 
 
 
