@@ -67,7 +67,7 @@ def scrape(request):
     else:
         safari_driver = '/Users/ciliukas/CodeAcademy/drivers/chromedriver'
         driver = webdriver.Safari(safari_driver)
-        driver.get('https://www.randomlists.com/email-addresses?qty=1000')
+        driver.get('https://www.randomlists.com/email-addresses?qty=150')
         page_source = driver.page_source
         EMAIL_REGEX = r'''(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])'''
         list_of_emails = []
@@ -76,10 +76,10 @@ def scrape(request):
             list_of_emails.append(re_match.group())
         driver.close()
             
-        random_emails = sample(list_of_emails, k=min(len(list_of_emails), 1001))
-        random_emails = random_emails[:1001]
+        random_emails = sample(list_of_emails, k=min(len(list_of_emails), 500))
+        random_emails = random_emails[:500]
         existing_emails_count = Email.objects.filter(user=request.user).count()
-        emails_to_create = 1001 - existing_emails_count
+        emails_to_create = min(500, 500 - existing_emails_count)
 
         for email_address in random_emails[:emails_to_create]:
             Email.objects.get_or_create(address=email_address, user=request.user)
@@ -191,6 +191,11 @@ class AddRecipient(LoginRequiredMixin, View):
             email_object = Email(address=email, user=request.user)
             email_object.save()
             messages.success(request, _("Recipient added successfully."))
-            return redirect("scrape") 
-        return render(request, self.template_name, {'form': form})
+            return redirect("scrape")
+        else:
+            messages.error(request, _("Invalid form data. Please try again."))
+            return redirect("recipient_error_message_view")
 
+
+def recipient_error_message_view(request):
+    return render(request, "user_profile/recipient_error_message_view.html")

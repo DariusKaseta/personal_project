@@ -42,11 +42,11 @@ P.S. This letter has been sent to registered companies according to the fields o
 
 
 class AddRecipientForm(forms.ModelForm):
+    address = forms.TextInput()
+    
     class Meta:
         model = Email
-        fields = ("address",)
-        widgets = {
-            "address": forms.TextInput(),
-        }
+        fields = ["address",]
+        
 
                                 

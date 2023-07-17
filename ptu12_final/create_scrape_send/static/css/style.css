@@ -73,6 +73,20 @@
     font-size: 0.5em;
 }
 
+.font-medium{
+    color: rgba(255, 0, 0, 0.877);
+    font-weight: bold;
+    font-size: 0.9em;
+    margin-top: 1.2%;
+}
+
+
+.recipient-font {
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
 .personal_photo,
 .default-photo {
     max-width: 150px;
@@ -125,13 +139,26 @@
 
 .left-column {
     flex: 1;
-    max-width: 38%;
-    margin-top: 100px;
+    max-width: 35%;
+    margin-top: 90px;
     margin-left: 30px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    overflow-y: auto;
+}
+
+.personal-info {
+    flex: 1;
+    max-width: 40%;
+    margin-top: 127px;
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow-y: auto;
 }
 
 .right-column {
@@ -144,16 +171,15 @@
     margin-top: 90px;
 }
 
-.right-column2 {
-    flex: 1;
-    max-width: 50%;
-    margin-top: -1550px;
-    margin-bottom: 900px;
-    margin-left: auto;
+.right-column-2 {
+    margin-left: 35rem;
     display: flex;
+    top: 15.1rem;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: flex-start;
+    position: sticky; 
+    margin-bottom: -130px;
+    overflow-y: auto; 
 }
 
 @media screen and (max-width: 768px) {
@@ -184,8 +210,8 @@
 }
 
 .form-field textarea {
-    height: 100px;
-    width: 25rem;
+    height: 120px;
+    width: 33rem;
 }
 
 body {
@@ -218,7 +244,7 @@ body {
 .form-group {
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     align-items: flex-start;
 }
 
@@ -227,8 +253,8 @@ body {
 }
 
 .form-group textarea {
-    height: 100px;
-    width: 50rem;
+    height: 130px;
+    width: 34rem;
 }
 
 .success-container {

@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "email error"|title %}{% endblock title %}
+{% block content %}
+<div class="error-container">
+    <h1 class="error-message">{% trans "invalid email data, or email already exists. Please try again."|capfirst %}</h1>
+</div>
+{% endblock content %}

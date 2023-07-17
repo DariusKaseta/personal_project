@@ -2,9 +2,30 @@
 {% load i18n %}
 {% block title %}{% trans "scraped emails"|capfirst %} {{ block.super }}{% endblock title %}
 {% block content %}
+<div class="right-column-2">
+    <h1 class="recipient-font">{% trans "add recipients"|capfirst %}</h1>
+    <form method="post" action="{% url 'add_recipient' %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ form.address.id_for_label }}">{{ form.address.label }}</label>
+            <input type="text" name="{{ form.address.name }}" id="{{ form.address.id_for_label }}" placeholder="{% trans "input an email"|capfirst %}">
+            {% if form.address.errors %}
+                <div class="errors">
+                    {% for error in form.address.errors %}
+                        <p class="error">{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        <button class="nav-button-link" type="submit" name="add_recipient">{% trans "add"|capfirst %}</button>
+    </form>
+</div>
 <div class="left-column">
     <h1 class="font">{% trans "scraped emails"|capfirst %} <span class="font-small">({% trans "in total"|capfirst %} - {{ email_count }})</span></h1>
     {% include 'includes/search.html' %}
+    {% if search_term %}
+        <span class="font-medium">{{ result_count }} {% trans "results"|lower %}</span>
+        {% endif %}
     <p>
     {% if scrape_list %}
         {% with scrape_list as page_obj %}
@@ -31,16 +52,16 @@
                 </tr>
             {% endfor %}
             {% if object_list %}
-                        <ul>
-                            {% for email in object_list %}
-                            <tr>
-                                <td>
-                                    <input type="checkbox" id="{{ email.address }}" name="emails" value="{{ email.address }}">
-                                    <label for="{{ email.address }}">{{ email.address }}</label>
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        </ul>
+                <ul>
+                    {% for email in object_list %}
+                    <tr>
+                        <td>
+                            <input type="checkbox" id="{{ email.address }}" name="emails" value="{{ email.address }}">
+                            <label for="{{ email.address }}">{{ email.address }}</label>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </ul>
             {% endif %}
             </tbody>
         </table>
@@ -59,24 +80,7 @@
     {% endif %}
     </p>
 </div>
-<div class="right-column2">
-    <h1 class="font">{% trans "add recipient"|capfirst %}</h1>
-    <form method="post" action="{% url 'add_recipient' %}">
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="{{ form.address.id_for_label }}">{{ form.address.label }}</label>
-            <input type="text" name="{{ form.address.name }}" id="{{ form.address.id_for_label }}" placeholder="{% trans "input an email"|capfirst %}">
-            {% if form.address.errors %}
-                <div class="errors">
-                    {% for error in form.address.errors %}
-                        <p class="error">{{ error }}</p>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        </div>
-        <button class="nav-button-link" type="submit" name="add_recipient">{% trans "add"|capfirst %}</button>
-    </form>
-</div>
+
 <script>
     function selectAllEmails() {
         const checkboxes = document.querySelectorAll('input[type="checkbox"]');
@@ -92,4 +96,5 @@
         });
     }
 </script>
-{% endblock %}
+{% endblock content %}
+

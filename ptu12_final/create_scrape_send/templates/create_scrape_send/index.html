@@ -3,7 +3,7 @@
 {% block title %}{% trans "index"|capfirst %}{{ block.super }}{% endblock %}
 {% block content %}
   <div class="personal-info-container">
-    <div class="left-column">
+    <div class="personal-info">
       {% if personal_info_data %}
       {% if personal_info_data.picture %}
         <img class="personal_photo" src="{{ personal_info_data.picture.url }}"> 
