@@ -32,6 +32,16 @@ class ScrapedEmailsSearchView(ListView):
             if search_words:
                 q_objects = [Q(**{field + '__icontains': word}) for field in self.search_fields for word in search_words]
                 queryset = queryset.filter(reduce(Q.__or__, q_objects))
+            else:
+                queryset = queryset.none()
+        else:
+            queryset = queryset.none()
         return queryset
-
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        search_term = self.request.GET.get("query", "")
+        context['search_term'] = search_term
+        context['result_count'] = self.get_queryset().count()
+        return context
 
