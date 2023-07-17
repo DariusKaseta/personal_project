@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-14 13:43+0300\n"
+"POT-Creation-Date: 2023-07-17 21:30+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -223,42 +223,56 @@ msgstr "Apie mane:"
 msgid "submit"
 msgstr "sukurti"
 
+#: user_profile/templates/user_profile/recipient_error_message_view.html:3
+#: user_profile/templates/user_profile/send_email_error.html:3
+msgid "email error"
+msgstr "pašto klaida"
+
+#: user_profile/templates/user_profile/recipient_error_message_view.html:6
+#| msgid "Failed to send email. Please try again."
+msgid "invalid email data, or email already exists. Please try again."
+msgstr "Neteisingi el. pašto duomenys arba el. paštas egzistuoja. Prašau, pabandykite dar kartą."
+
 #: user_profile/templates/user_profile/scraped_emails.html:3
-#: user_profile/templates/user_profile/scraped_emails.html:6
+#: user_profile/templates/user_profile/scraped_emails.html:24
 msgid "scraped emails"
 msgstr "Iškrapštyti el. pašto adresai"
 
 #: user_profile/templates/user_profile/scraped_emails.html:6
-msgid "in total"
-msgstr "Viso el. adresų"
+#| msgid "add recipient"
+msgid "add recipients"
+msgstr "pridėti gavėjus"
 
-#: user_profile/templates/user_profile/scraped_emails.html:17
-#: user_profile/templates/user_profile/scraped_emails.html:49
-msgid "select all"
-msgstr "Parinti visus"
-
-#: user_profile/templates/user_profile/scraped_emails.html:18
-#: user_profile/templates/user_profile/scraped_emails.html:50
-msgid "transfer to:"
-msgstr "Perkelti į gavėjus:"
-
-#: user_profile/templates/user_profile/scraped_emails.html:19
-#: user_profile/templates/user_profile/scraped_emails.html:51
-msgid "deselect all"
-msgstr "Atžymėti visus"
-
-#: user_profile/templates/user_profile/scraped_emails.html:63
-msgid "add recipient"
-msgstr "pridėti gavėją"
-
-#: user_profile/templates/user_profile/scraped_emails.html:68
-#| msgid "compose an email"
+#: user_profile/templates/user_profile/scraped_emails.html:11
 msgid "input an email"
 msgstr "įveskite el. paštą"
 
-#: user_profile/templates/user_profile/scraped_emails.html:77
+#: user_profile/templates/user_profile/scraped_emails.html:20
 msgid "add"
 msgstr "pridėti"
+
+#: user_profile/templates/user_profile/scraped_emails.html:24
+msgid "in total"
+msgstr "Viso el. adresų"
+
+#: user_profile/templates/user_profile/scraped_emails.html:27
+msgid "results"
+msgstr "rezultatas(-ai)"
+
+#: user_profile/templates/user_profile/scraped_emails.html:38
+#: user_profile/templates/user_profile/scraped_emails.html:70
+msgid "select all"
+msgstr "Parinti visus"
+
+#: user_profile/templates/user_profile/scraped_emails.html:39
+#: user_profile/templates/user_profile/scraped_emails.html:71
+msgid "transfer to:"
+msgstr "Perkelti į gavėjus:"
+
+#: user_profile/templates/user_profile/scraped_emails.html:40
+#: user_profile/templates/user_profile/scraped_emails.html:72
+msgid "deselect all"
+msgstr "Atžymėti visus"
 
 #: user_profile/templates/user_profile/send_email.html:3
 msgid "compose an email"
@@ -275,10 +289,6 @@ msgstr "Gavėjas:"
 #: user_profile/templates/user_profile/send_email.html:27
 msgid "send"
 msgstr "siųsti"
-
-#: user_profile/templates/user_profile/send_email_error.html:3
-msgid "email error"
-msgstr "pašto klaida"
 
 #: user_profile/templates/user_profile/send_email_error.html:6
 msgid "error sending email!"
@@ -308,3 +318,8 @@ msgstr "Prisijungimo klaida. Prašau, pabandykite dar kartą."
 #: user_profile/views.py:193
 msgid "Recipient added successfully."
 msgstr "Gavėjas sėkmingai pridėtas."
+
+#: user_profile/views.py:196
+#| msgid "Failed to send email. Please try again."
+msgid "Invalid form data. Please try again."
+msgstr "Netinkami formos duomenys. Prašau, pabandykite dar kartą."
