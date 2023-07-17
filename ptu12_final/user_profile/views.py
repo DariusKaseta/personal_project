@@ -18,6 +18,7 @@ from typing import Any
 import re 
 from selenium import webdriver 
 import smtplib
+import os
 from email.message import EmailMessage
 from email.utils import formataddr
 
@@ -149,6 +150,14 @@ class SendEmailView(LoginRequiredMixin, View):
             sent_messages["From"] = formataddr(("Coding Is Fun :)", f"{email_from}"))
             sent_messages["To"] = ", ".join(to_email)
             sent_messages.set_content(content)
+            attachment_dir = os.path.join("media", "attachments")
+            
+            for each_file in os.listdir(attachment_dir):
+                file_path = os.path.join(attachment_dir, each_file)
+                with open(file_path, "rb") as f:
+                    file_data = f.read()
+                    file_name = f.name
+                    sent_messages.add_attachment(file_data, maintype="application", subtype="octet-stream", filename=file_name)
 
             try:
                 with smtplib.SMTP(settings.EMAIL_HOST, settings.EMAIL_PORT) as server:
