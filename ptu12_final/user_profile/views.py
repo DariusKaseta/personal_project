@@ -153,10 +153,12 @@ class SendEmailView(LoginRequiredMixin, View):
             attachment_dir = os.path.join("media", "attachments")
             
             for each_file in os.listdir(attachment_dir):
+                if each_file == ".DS_Store":
+                    continue
                 file_path = os.path.join(attachment_dir, each_file)
                 with open(file_path, "rb") as f:
                     file_data = f.read()
-                    file_name = f.name
+                    file_name = os.path.basename(file_path)
                     sent_messages.add_attachment(file_data, maintype="application", subtype="octet-stream", filename=file_name)
 
             try:
